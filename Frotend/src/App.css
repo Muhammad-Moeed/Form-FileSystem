@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Form Classes */
+
+.form-border{
+    border-color: #95c74b !important;
+    box-shadow: none !important; 
+}
+.lable-color{
+    color: #3f9ad4 !important;
+}
+
+/* Header Tabs Classes */
+
+.custom-tabs .nav-link {
+  background-color: transparent !important;
+  color: #6ca3d2 !important;
+  border: 1px solid #ccc !important;
+  border-bottom: none !important;
+  margin: 0 4px;
+}
+
+.custom-tabs .nav-link.active {
+  color: #8fc34a !important;
+  background-color: transparent !important;
+  border-color: #ccc !important;
+  border-bottom: 2px solid white !important;
+  font-weight: 500;
+}
+
+/* Portla button Class  */
+
+.portal{
+  border-color:#468ec6!important;
+  color: #468ec6 !important;
+}

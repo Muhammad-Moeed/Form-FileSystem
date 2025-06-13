@@ -1,0 +1,214 @@
+{
+    "sourceFile": "src/App.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 49,
+            "patches": [
+                {
+                    "date": 1748893636351,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748945061746,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,63 +0,0 @@\n-body {\n-  margin: 0;\n-  font-family: Arial, sans-serif;\n-  background: #f0f4f8;\n-}\n-\n-.form-container {\n-  background: #fff;\n-  padding: 25px;\n-  max-width: 900px;\n-  margin: 40px auto;\n-  border-radius: 10px;\n-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n-}\n-\n-form {\n-  display: flex;\n-  flex-direction: column;\n-  gap: 15px;\n-}\n-\n-h2 {\n-  text-align: center;\n-  margin-bottom: 20px;\n-}\n-\n-.row {\n-  display: flex;\n-  gap: 15px;\n-  flex-wrap: wrap;\n-}\n-\n-input,\n-select {\n-  flex: 1;\n-  padding: 10px;\n-  border: 2px solid #8bc34a;\n-  border-radius: 5px;\n-  font-size: 14px;\n-}\n-\n-.file-upload {\n-  display: flex;\n-  flex-direction: column;\n-}\n-\n-.file-upload input {\n-  padding: 5px;\n-}\n-\n-button {\n-  background-color: #4caf50;\n-  color: white;\n-  padding: 12px;\n-  font-size: 16px;\n-  border: none;\n-  border-radius: 6px;\n-  cursor: pointer;\n-}\n-\n-button:hover {\n-  background-color: #45a049;\n-}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1748945176374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,92 @@\n+/* Saylani Form Styles */\n+.saylani-form-container {\n+  max-width: 800px;\n+  margin: 0 auto;\n+  padding: 20px;\n+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n+}\n \n+.saylani-form-header {\n+  text-align: center;\n+  margin-bottom: 30px;\n+  background-color: #0d5eaf;\n+  color: white;\n+  padding: 15px;\n+  border-radius: 5px;\n+}\n+\n+.saylani-form-header h2 {\n+  margin: 0;\n+  font-size: 24px;\n+}\n+\n+.saylani-form-header p {\n+  margin: 5px 0 0;\n+  font-size: 18px;\n+}\n+\n+.saylani-form {\n+  background-color: #f9f9f9;\n+  padding: 25px;\n+  border-radius: 5px;\n+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n+}\n+\n+.form-group {\n+  margin-bottom: 20px;\n+}\n+\n+.form-group label {\n+  display: block;\n+  margin-bottom: 8px;\n+  font-weight: bold;\n+  color: #333;\n+}\n+\n+.saylani-input, .saylani-select {\n+  width: 100%;\n+  padding: 12px;\n+  border: 1px solid #ddd;\n+  border-radius: 4px;\n+  font-size: 16px;\n+  box-sizing: border-box;\n+}\n+\n+.saylani-input:focus, .saylani-select:focus {\n+  outline: none;\n+  border-color: #0d5eaf;\n+  box-shadow: 0 0 5px rgba(13, 94, 175, 0.3);\n+}\n+\n+.form-actions {\n+  display: flex;\n+  justify-content: space-between;\n+  margin-top: 30px;\n+}\n+\n+.saylani-submit-btn, .saylani-download-btn {\n+  padding: 12px 25px;\n+  border: none;\n+  border-radius: 4px;\n+  font-size: 16px;\n+  cursor: pointer;\n+  transition: background-color 0.3s;\n+}\n+\n+.saylani-submit-btn {\n+  background-color: #0d5eaf;\n+  color: white;\n+}\n+\n+.saylani-submit-btn:hover {\n+  background-color: #0a4b8c;\n+}\n+\n+.saylani-download-btn {\n+  background-color: #28a745;\n+  color: white;\n+}\n+\n+.saylani-download-btn:hover {\n+  background-color: #218838;\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1748947109327,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,92 +0,0 @@\n-/* Saylani Form Styles */\n-.saylani-form-container {\n-  max-width: 800px;\n-  margin: 0 auto;\n-  padding: 20px;\n-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n-}\n-\n-.saylani-form-header {\n-  text-align: center;\n-  margin-bottom: 30px;\n-  background-color: #0d5eaf;\n-  color: white;\n-  padding: 15px;\n-  border-radius: 5px;\n-}\n-\n-.saylani-form-header h2 {\n-  margin: 0;\n-  font-size: 24px;\n-}\n-\n-.saylani-form-header p {\n-  margin: 5px 0 0;\n-  font-size: 18px;\n-}\n-\n-.saylani-form {\n-  background-color: #f9f9f9;\n-  padding: 25px;\n-  border-radius: 5px;\n-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n-}\n-\n-.form-group {\n-  margin-bottom: 20px;\n-}\n-\n-.form-group label {\n-  display: block;\n-  margin-bottom: 8px;\n-  font-weight: bold;\n-  color: #333;\n-}\n-\n-.saylani-input, .saylani-select {\n-  width: 100%;\n-  padding: 12px;\n-  border: 1px solid #ddd;\n-  border-radius: 4px;\n-  font-size: 16px;\n-  box-sizing: border-box;\n-}\n-\n-.saylani-input:focus, .saylani-select:focus {\n-  outline: none;\n-  border-color: #0d5eaf;\n-  box-shadow: 0 0 5px rgba(13, 94, 175, 0.3);\n-}\n-\n-.form-actions {\n-  display: flex;\n-  justify-content: space-between;\n-  margin-top: 30px;\n-}\n-\n-.saylani-submit-btn, .saylani-download-btn {\n-  padding: 12px 25px;\n-  border: none;\n-  border-radius: 4px;\n-  font-size: 16px;\n-  cursor: pointer;\n-  transition: background-color 0.3s;\n-}\n-\n-.saylani-submit-btn {\n-  background-color: #0d5eaf;\n-  color: white;\n-}\n-\n-.saylani-submit-btn:hover {\n-  background-color: #0a4b8c;\n-}\n-\n-.saylani-download-btn {\n-  background-color: #28a745;\n-  color: white;\n-}\n-\n-.saylani-download-btn:hover {\n-  background-color: #218838;\n-}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749124579863,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,3 @@\n+.form-border{\r\n+    \r\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749124585196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n .form-border{\r\n-    \r\n+    border-color: red;\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749124593648,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n .form-border{\r\n-    border-color: red;\r\n+    border-color: red !important;\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749124617055,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n .form-border{\r\n-    border-color: red !important;\r\n+    border-color: #95c74b !important;\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749124774324,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,4 @@\n .form-border{\r\n     border-color: #95c74b !important;\r\n-}\n\\ No newline at end of file\n+}\r\n+.lalbe\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749124783162,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n .form-border{\r\n     border-color: #95c74b !important;\r\n }\r\n-.lalbe\n\\ No newline at end of file\n+.lalbe-color{\r\n+    color: red !important;\r\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749124793075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n .form-border{\r\n     border-color: #95c74b !important;\r\n }\r\n-.lalbe-color{\r\n+.lable-color{\r\n     color: red !important;\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749124811843,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n .form-border{\r\n     border-color: #95c74b !important;\r\n }\r\n .lable-color{\r\n-    color: red !important;\r\n+    color: #3f9ad4 !important;\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749150884724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,5 +2,21 @@\n     border-color: #95c74b !important;\r\n }\r\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n-}\n\\ No newline at end of file\n+}\r\n+\r\n+.custom-tabs .nav-link {\r\n+  background-color: transparent !important;\r\n+  color: #6ca3d2 !important;\r\n+  border: 1px solid #ccc !important;\r\n+  border-bottom: none !important;\r\n+  margin: 0 4px;\r\n+}\r\n+\r\n+.custom-tabs .nav-link.active {\r\n+  color: #8fc34a !important;\r\n+  background-color: transparent !important;\r\n+  border-color: #ccc !important;\r\n+  border-bottom: 2px solid white !important;\r\n+  font-weight: 500;\r\n+}\r\n"
+                },
+                {
+                    "date": 1749151166520,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,17 +4,17 @@\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n \r\n-.custom-tabs .nav-link {\r\n+.custom-tabs .custom-tab-link {\r\n   background-color: transparent !important;\r\n   color: #6ca3d2 !important;\r\n   border: 1px solid #ccc !important;\r\n   border-bottom: none !important;\r\n   margin: 0 4px;\r\n }\r\n \r\n-.custom-tabs .nav-link.active {\r\n+.custom-tabs .custom-tab-link.active {\r\n   color: #8fc34a !important;\r\n   background-color: transparent !important;\r\n   border-color: #ccc !important;\r\n   border-bottom: 2px solid white !important;\r\n"
+                },
+                {
+                    "date": 1749151275121,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n   margin: 0 4px;\r\n }\r\n \r\n .custom-tabs .custom-tab-link.active {\r\n-  color: #8fc34a !important;\r\n+  /* color: #8fc34a !important; */\r\n   background-color: transparent !important;\r\n   border-color: #ccc !important;\r\n   border-bottom: 2px solid white !important;\r\n   font-weight: 500;\r\n"
+                },
+                {
+                    "date": 1749151280428,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n   margin: 0 4px;\r\n }\r\n \r\n .custom-tabs .custom-tab-link.active {\r\n-  /* color: #8fc34a !important; */\r\n+  color: #8fc34a !important;\r\n   background-color: transparent !important;\r\n   border-color: #ccc !important;\r\n   border-bottom: 2px solid white !important;\r\n   font-weight: 500;\r\n"
+                },
+                {
+                    "date": 1749151353572,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,18 +5,26 @@\n     color: #3f9ad4 !important;\r\n }\r\n \r\n .custom-tabs .custom-tab-link {\r\n-  background-color: transparent !important;\r\n-  color: #6ca3d2 !important;\r\n-  border: 1px solid #ccc !important;\r\n-  border-bottom: none !important;\r\n+  background-color: transparent;\r\n+  color: #6ca3d2;\r\n+  border: 1px solid #ccc;\r\n+  border-bottom: none;\r\n   margin: 0 4px;\r\n+  font-weight: normal;\r\n }\r\n \r\n .custom-tabs .custom-tab-link.active {\r\n-  color: #8fc34a !important;\r\n-  background-color: transparent !important;\r\n-  border-color: #ccc !important;\r\n-  border-bottom: 2px solid white !important;\r\n+  color: #8fc34a;\r\n   font-weight: 500;\r\n+  border-color: #ccc;\r\n+  background-color: transparent;\r\n+  border-bottom: 2px solid white;\r\n }\r\n+\r\n+/* Prevent hover/focus from showing active color mistakenly */\r\n+.custom-tabs .custom-tab-link:hover,\r\n+.custom-tabs .custom-tab-link:focus {\r\n+  color: #6ca3d2;\r\n+  text-decoration: none;\r\n+}\r\n"
+                },
+                {
+                    "date": 1749151406798,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,27 +4,19 @@\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n \r\n-.custom-tabs .custom-tab-link {\r\n-  background-color: transparent;\r\n-  color: #6ca3d2;\r\n-  border: 1px solid #ccc;\r\n-  border-bottom: none;\r\n+.custom-tabs .nav-link {\r\n+  background-color: transparent !important;\r\n+  color: #6ca3d2 !important;\r\n+  border: 1px solid #ccc !important;\r\n+  border-bottom: none !important;\r\n   margin: 0 4px;\r\n-  font-weight: normal;\r\n }\r\n \r\n-.custom-tabs .custom-tab-link.active {\r\n-  color: #8fc34a;\r\n+.custom-tabs .nav-link.active {\r\n+  color: #8fc34a !important;\r\n+  background-color: transparent !important;\r\n+  border-color: #ccc !important;\r\n+  border-bottom: 2px solid white !important;\r\n   font-weight: 500;\r\n-  border-color: #ccc;\r\n-  background-color: transparent;\r\n-  border-bottom: 2px solid white;\r\n }\r\n-\r\n-/* Prevent hover/focus from showing active color mistakenly */\r\n-.custom-tabs .custom-tab-link:hover,\r\n-.custom-tabs .custom-tab-link:focus {\r\n-  color: #6ca3d2;\r\n-  text-decoration: none;\r\n-}\r\n"
+                },
+                {
+                    "date": 1749151683231,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,19 +4,20 @@\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n \r\n-.custom-tabs .nav-link {\r\n-  background-color: transparent !important;\r\n-  color: #6ca3d2 !important;\r\n-  border: 1px solid #ccc !important;\r\n-  border-bottom: none !important;\r\n+.custom-tab-link {\r\n+  background-color: transparent;\r\n+  color: #6ca3d2;\r\n+  border: 1px solid #ccc;\r\n+  border-bottom: none;\r\n   margin: 0 4px;\r\n }\r\n \r\n-.custom-tabs .nav-link.active {\r\n-  color: #8fc34a !important;\r\n-  background-color: transparent !important;\r\n-  border-color: #ccc !important;\r\n-  border-bottom: 2px solid white !important;\r\n+.custom-tab-link.active {\r\n+  color: #8fc34a;\r\n+  background-color: transparent;\r\n+  border-color: #ccc;\r\n+  border-bottom: 2px solid white;\r\n   font-weight: 500;\r\n }\r\n+\r\n"
+                },
+                {
+                    "date": 1749151690076,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,20 +4,19 @@\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n \r\n-.custom-tab-link {\r\n-  background-color: transparent;\r\n-  color: #6ca3d2;\r\n-  border: 1px solid #ccc;\r\n-  border-bottom: none;\r\n+.custom-tabs .nav-link {\r\n+  background-color: transparent !important;\r\n+  color: #6ca3d2 !important;\r\n+  border: 1px solid #ccc !important;\r\n+  border-bottom: none !important;\r\n   margin: 0 4px;\r\n }\r\n \r\n-.custom-tab-link.active {\r\n-  color: #8fc34a;\r\n-  background-color: transparent;\r\n-  border-color: #ccc;\r\n-  border-bottom: 2px solid white;\r\n+.custom-tabs .nav-link.active {\r\n+  color: #8fc34a !important;\r\n+  background-color: transparent !important;\r\n+  border-color: #ccc !important;\r\n+  border-bottom: 2px solid white !important;\r\n   font-weight: 500;\r\n }\r\n-\r\n"
+                },
+                {
+                    "date": 1749151730339,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n     color: #3f9ad4 !important;\r\n }\r\n \r\n .custom-tabs .nav-link {\r\n-  background-color: transparent !important;\r\n+  background-color: transparent ;\r\n   color: #6ca3d2 !important;\r\n   border: 1px solid #ccc !important;\r\n   border-bottom: none !important;\r\n   margin: 0 4px;\r\n"
+                },
+                {
+                    "date": 1749152350121,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,19 +4,4 @@\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n \r\n-.custom-tabs .nav-link {\r\n-  background-color: transparent ;\r\n-  color: #6ca3d2 !important;\r\n-  border: 1px solid #ccc !important;\r\n-  border-bottom: none !important;\r\n-  margin: 0 4px;\r\n-}\r\n-\r\n-.custom-tabs .nav-link.active {\r\n-  color: #8fc34a !important;\r\n-  background-color: transparent !important;\r\n-  border-color: #ccc !important;\r\n-  border-bottom: 2px solid white !important;\r\n-  font-weight: 500;\r\n-}\r\n"
+                },
+                {
+                    "date": 1749152364773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,4 +4,19 @@\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n \r\n+.custom-tabs .nav-link {\r\n+  background-color: transparent !important;\r\n+  color: #6ca3d2 !important;\r\n+  border: 1px solid #ccc !important;\r\n+  border-bottom: none !important;\r\n+  margin: 0 4px;\r\n+}\r\n+\r\n+.custom-tabs .nav-link.active {\r\n+  color: #8fc34a !important;\r\n+  background-color: transparent !important;\r\n+  border-color: #ccc !important;\r\n+  border-bottom: 2px solid white !important;\r\n+  font-weight: 500;\r\n+}\r\n"
+                },
+                {
+                    "date": 1749208144303,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,4 +19,7 @@\n   border-color: #ccc !important;\r\n   border-bottom: 2px solid white !important;\r\n   font-weight: 500;\r\n }\r\n+.portal{\r\n+  bac\r\n+}\r\n"
+                },
+                {
+                    "date": 1749208151585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,6 +20,6 @@\n   border-bottom: 2px solid white !important;\r\n   font-weight: 500;\r\n }\r\n .portal{\r\n-  bac\r\n+  background-color: red !important;\r\n }\r\n"
+                },
+                {
+                    "date": 1749208242023,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,7 +19,5 @@\n   border-color: #ccc !important;\r\n   border-bottom: 2px solid white !important;\r\n   font-weight: 500;\r\n }\r\n-.portal{\r\n-  background-color: red !important;\r\n-}\r\n+.portal{}\r\n"
+                },
+                {
+                    "date": 1749208249812,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,5 +19,7 @@\n   border-color: #ccc !important;\r\n   border-bottom: 2px solid white !important;\r\n   font-weight: 500;\r\n }\r\n-.portal{}\r\n+.portal{\r\n+  border-color: red !important;\r\n+}\r\n"
+                },
+                {
+                    "date": 1749208361295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,6 +20,6 @@\n   border-bottom: 2px solid white !important;\r\n   font-weight: 500;\r\n }\r\n .portal{\r\n-  border-color: red !important;\r\n+  border-color:#468ec6!important;\r\n }\r\n"
+                },
+                {
+                    "date": 1749208376808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,5 +21,6 @@\n   font-weight: 500;\r\n }\r\n .portal{\r\n   border-color:#468ec6!important;\r\n+  col\r\n }\r\n"
+                },
+                {
+                    "date": 1749208390366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,6 +21,6 @@\n   font-weight: 500;\r\n }\r\n .portal{\r\n   border-color:#468ec6!important;\r\n-  col\r\n+  color: #468ec6 !important;\r\n }\r\n"
+                },
+                {
+                    "date": 1749208686957,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,4 +23,5 @@\n .portal{\r\n   border-color:#468ec6!important;\r\n   color: #468ec6 !important;\r\n }\r\n+studnet-ico\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749208692259,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,5 +23,7 @@\n .portal{\r\n   border-color:#468ec6!important;\r\n   color: #468ec6 !important;\r\n }\r\n-studnet-ico\n\\ No newline at end of file\n+.studnet-ico{\r\n+  background-color: ;\r\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749208707259,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,6 +24,6 @@\n   border-color:#468ec6!important;\r\n   color: #468ec6 !important;\r\n }\r\n .studnet-ico{\r\n-  background-color: ;\r\n+  background-color:#468ec6 ;\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749208712792,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,6 +24,6 @@\n   border-color:#468ec6!important;\r\n   color: #468ec6 !important;\r\n }\r\n .studnet-ico{\r\n-  background-color:#468ec6 ;\r\n+  background-color:#468ec6 !important ;\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749208722254,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,7 +23,7 @@\n .portal{\r\n   border-color:#468ec6!important;\r\n   color: #468ec6 !important;\r\n }\r\n-.studnet-ico{\r\n+.student-ico{\r\n   background-color:#468ec6 !important ;\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749208734236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,6 +24,6 @@\n   border-color:#468ec6!important;\r\n   color: #468ec6 !important;\r\n }\r\n .student-ico{\r\n-  background-color:#468ec6 !important ;\r\n+  color: ;\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749208743306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,7 +23,4 @@\n .portal{\r\n   border-color:#468ec6!important;\r\n   color: #468ec6 !important;\r\n }\r\n-.student-ico{\r\n-  color: ;\r\n-}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749209869240,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+\r\n .form-border{\r\n     border-color: #95c74b !important;\r\n }\r\n .lable-color{\r\n"
+                },
+                {
+                    "date": 1749381845648,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,26 @@\n+/* Add this to your App.css or global styles */\r\n+body, html {\r\n+  margin: 0;\r\n+  padding: 0;\r\n+}\r\n \r\n+/* If using Bootstrap, you might also need */\r\n+.container-fluid {\r\n+  padding-left: 0;\r\n+  padding-right: 0;\r\n+}\r\n+\r\n+.row {\r\n+  margin-left: 0;\r\n+  margin-right: 0;\r\n+}\r\n+\r\n+.col, [class*=\"col-\"] {\r\n+  padding-left: 0;\r\n+  padding-right: 0;\r\n+}\r\n+\r\n .form-border{\r\n     border-color: #95c74b !important;\r\n }\r\n .lable-color{\r\n"
+                },
+                {
+                    "date": 1749381865166,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,26 +1,9 @@\n-/* Add this to your App.css or global styles */\r\n-body, html {\r\n+body {\r\n   margin: 0;\r\n   padding: 0;\r\n }\r\n \r\n-/* If using Bootstrap, you might also need */\r\n-.container-fluid {\r\n-  padding-left: 0;\r\n-  padding-right: 0;\r\n-}\r\n-\r\n-.row {\r\n-  margin-left: 0;\r\n-  margin-right: 0;\r\n-}\r\n-\r\n-.col, [class*=\"col-\"] {\r\n-  padding-left: 0;\r\n-  padding-right: 0;\r\n-}\r\n-\r\n .form-border{\r\n     border-color: #95c74b !important;\r\n }\r\n .lable-color{\r\n"
+                },
+                {
+                    "date": 1749409393816,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,14 @@\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n \r\n+.form-control,\r\n+.form-select {\r\n+  border: none !important;\r\n+  box-shadow: none !important; /* Bootstrap ke focus box-shadow ko bhi hata dega */\r\n+}\r\n+\r\n .custom-tabs .nav-link {\r\n   background-color: transparent !important;\r\n   color: #6ca3d2 !important;\r\n   border: 1px solid #ccc !important;\r\n"
+                },
+                {
+                    "date": 1749409412144,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,8 @@\n }\r\n \r\n .form-control,\r\n .form-select {\r\n-  border: none !important;\r\n   box-shadow: none !important; /* Bootstrap ke focus box-shadow ko bhi hata dega */\r\n }\r\n \r\n .custom-tabs .nav-link {\r\n"
+                },
+                {
+                    "date": 1749409454816,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n }\r\n \r\n .form-control,\r\n .form-select {\r\n-  box-shadow: none !important; /* Bootstrap ke focus box-shadow ko bhi hata dega */\r\n+  box-shadow: none !important; \r\n }\r\n \r\n .custom-tabs .nav-link {\r\n   background-color: transparent !important;\r\n"
+                },
+                {
+                    "date": 1749409470351,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n }\r\n \r\n .form-border{\r\n     border-color: #95c74b !important;\r\n+    box-shadow: none !important; \r\n }\r\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n"
+                },
+                {
+                    "date": 1749409493313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,13 +10,8 @@\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n \r\n-.form-control,\r\n-.form-select {\r\n-  box-shadow: none !important; \r\n-}\r\n-\r\n .custom-tabs .nav-link {\r\n   background-color: transparent !important;\r\n   color: #6ca3d2 !important;\r\n   border: 1px solid #ccc !important;\r\n"
+                },
+                {
+                    "date": 1749409502744,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,10 @@\n   margin: 0;\r\n   padding: 0;\r\n }\r\n \r\n+/* Form Classes */\r\n+\r\n .form-border{\r\n     border-color: #95c74b !important;\r\n     box-shadow: none !important; \r\n }\r\n"
+                },
+                {
+                    "date": 1749409513404,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,10 @@\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n \r\n+Heade Tabs \r\n+\r\n .custom-tabs .nav-link {\r\n   background-color: transparent !important;\r\n   color: #6ca3d2 !important;\r\n   border: 1px solid #ccc !important;\r\n"
+                },
+                {
+                    "date": 1749409518984,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n \r\n-Heade Tabs \r\n+Header Tabs Classes\r\n \r\n .custom-tabs .nav-link {\r\n   background-color: transparent !important;\r\n   color: #6ca3d2 !important;\r\n"
+                },
+                {
+                    "date": 1749409532809,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n .lable-color{\r\n     color: #3f9ad4 !important;\r\n }\r\n \r\n-Header Tabs Classes\r\n+/* Header Tabs Classes */\r\n \r\n .custom-tabs .nav-link {\r\n   background-color: transparent !important;\r\n   color: #6ca3d2 !important;\r\n@@ -29,8 +29,10 @@\n   border-color: #ccc !important;\r\n   border-bottom: 2px solid white !important;\r\n   font-weight: 500;\r\n }\r\n+\r\n+\r\n .portal{\r\n   border-color:#468ec6!important;\r\n   color: #468ec6 !important;\r\n }\r\n"
+                },
+                {
+                    "date": 1749409540369,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n   border-bottom: 2px solid white !important;\r\n   font-weight: 500;\r\n }\r\n \r\n-\r\n+/* Portla button Class  */\r\n .portal{\r\n   border-color:#468ec6!important;\r\n   color: #468ec6 !important;\r\n }\r\n"
+                }
+            ],
+            "date": 1748893636351,
+            "name": "Commit-0",
+            "content": "body {\n  margin: 0;\n  font-family: Arial, sans-serif;\n  background: #f0f4f8;\n}\n\n.form-container {\n  background: #fff;\n  padding: 25px;\n  max-width: 900px;\n  margin: 40px auto;\n  border-radius: 10px;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n}\n\nform {\n  display: flex;\n  flex-direction: column;\n  gap: 15px;\n}\n\nh2 {\n  text-align: center;\n  margin-bottom: 20px;\n}\n\n.row {\n  display: flex;\n  gap: 15px;\n  flex-wrap: wrap;\n}\n\ninput,\nselect {\n  flex: 1;\n  padding: 10px;\n  border: 2px solid #8bc34a;\n  border-radius: 5px;\n  font-size: 14px;\n}\n\n.file-upload {\n  display: flex;\n  flex-direction: column;\n}\n\n.file-upload input {\n  padding: 5px;\n}\n\nbutton {\n  background-color: #4caf50;\n  color: white;\n  padding: 12px;\n  font-size: 16px;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n}\n\nbutton:hover {\n  background-color: #45a049;\n}\n"
+        }
+    ]
+}

@@ -1,0 +1,402 @@
+{
+    "sourceFile": "index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 96,
+            "patches": [
+                {
+                    "date": 1749468824763,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749468858125,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +0,0 @@\n-import React from 'react'\r\n-\r\n-const index = () => {\r\n-  return (\r\n-    <div>index</div>\r\n-  )\r\n-}\r\n-\r\n-export default index\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749469200391,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,15 @@\n+import express from \"express\";\r\n+import multer from \"multer\";\r\n+import path from \"path\";\r\n+\r\n+const app = express();\r\n+const upload = multer({ dest: \"uploads/\" });\r\n+\r\n+app.post(\"/upload\", upload.single(\"image\"), (req, res) => {\r\n+  console.log(req.file);\r\n+  res.send(\"File uploaded!\");\r\n+});\r\n+\r\n+app.listen(5000, () => {\r\n+  console.log(\"Server started on port 5000\");\r\n+});\r\n"
+                },
+                {
+                    "date": 1749469284370,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,4 +12,5 @@\n \r\n app.listen(5000, () => {\r\n   console.log(\"Server started on port 5000\");\r\n });\r\n+npm install -g nodemon\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749636128778,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import express from \"express\";\r\n import multer from \"multer\";\r\n import path from \"path\";\r\n+import dot\r\n \r\n const app = express();\r\n const upload = multer({ dest: \"uploads/\" });\r\n \r\n@@ -12,5 +13,4 @@\n \r\n app.listen(5000, () => {\r\n   console.log(\"Server started on port 5000\");\r\n });\r\n-npm install -g nodemon\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749636135567,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import express from \"express\";\r\n import multer from \"multer\";\r\n import path from \"path\";\r\n-import dot\r\n \r\n+\r\n const app = express();\r\n const upload = multer({ dest: \"uploads/\" });\r\n \r\n app.post(\"/upload\", upload.single(\"image\"), (req, res) => {\r\n"
+                },
+                {
+                    "date": 1749638432817,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,131 @@\n-import express from \"express\";\r\n-import multer from \"multer\";\r\n-import path from \"path\";\r\n+const express = require(\"express\");\r\n+const multer = require(\"multer\");\r\n+const cloudinary = require(\"cloudinary\").v2;\r\n+const fs = require(\"fs\").promises;\r\n+const cors = require(\"cors\");\r\n \r\n+require(\"dotenv\").config();\r\n \r\n const app = express();\r\n-const upload = multer({ dest: \"uploads/\" });\r\n \r\n-app.post(\"/upload\", upload.single(\"image\"), (req, res) => {\r\n-  console.log(req.file);\r\n-  res.send(\"File uploaded!\");\r\n+app.use(cors());\r\n+app.use(express.json());\r\n+\r\n+// First Initialize Multer\r\n+\r\n+const storage = multer.memoryStorage();\r\n+\r\n+const upload = multer({\r\n+  limits: {\r\n+    fileSize: 3 * 1024 * 1024,\r\n+  },\r\n+  fileFilter: (req, file, cb) => {\r\n+    if (file.mimetype.startsWith(\"image/\")) {\r\n+      cb(null, true);\r\n+    } else {\r\n+      cb(new Error(\"Only Image is Required\"), false);\r\n+    }\r\n+  },\r\n+  storage: storage,\r\n });\r\n \r\n-app.listen(5000, () => {\r\n-  console.log(\"Server started on port 5000\");\r\n+// Configure Cloudinary\r\n+\r\n+cloudinary.config({\r\n+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,\r\n+  api_key: process.env.CLOUDINARY_API_KEY,\r\n+  api_secret: process.env.CLOUDINARY_API_SECRET,\r\n });\r\n+\r\n+//\r\n+\r\n+const uploadImageInCloudinary = (buffer, fileName) => {\r\n+  return new Promise((res, rej) => {\r\n+    cloudinary.uploader\r\n+      .upload_stream(\r\n+        {\r\n+          resource_type: \"image\",\r\n+          public_id: `${Date.now()}_${fileName}`,\r\n+          folder: \"users_upload\",\r\n+        },\r\n+        (error, result) => {\r\n+          if (error) {\r\n+            rej(error);\r\n+          } else {\r\n+            res(result);\r\n+          }\r\n+        }\r\n+      )\r\n+      .end(buffer);\r\n+  });\r\n+};\r\n+\r\n+const readDataFromFile = async () => {\r\n+  try {\r\n+    const data = await fs.readFile(\"data.json\", \"utf-8\");\r\n+    return JSON.parse(data);\r\n+  } catch (error) {\r\n+    console.log(error);\r\n+    return [];\r\n+  }\r\n+};\r\n+\r\n+const writeDataToFile = async (data) => {\r\n+  try {\r\n+    await fs.writeFile(\"data.json\", JSON.stringify(data, null, 2));\r\n+    console.log(\"Data insert into the file\");\r\n+  } catch (error) {\r\n+    console.log(\"Something went wrong while writing Data\");\r\n+    console.log(error);\r\n+  }\r\n+};\r\n+\r\n+app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n+  const { name, email } = req.body;\r\n+\r\n+  if (!name || !email) {\r\n+    return res.send({\r\n+      message: \"Name and Image is Required\",\r\n+      success: false,\r\n+    });\r\n+  }\r\n+\r\n+  if (!req.file) {\r\n+    return res.send({ success: false,  message: \"Image is required\" });\r\n+  }\r\n+\r\n+  const uploadImage = await uploadImageInCloudinary(\r\n+    req.file.buffer,\r\n+    req.file.originalname\r\n+  );\r\n+\r\n+  const newUser = {\r\n+    name: name,\r\n+    email: email,\r\n+    image: uploadImage.secure_url,\r\n+    id: uploadImage.public_id,\r\n+  };\r\n+\r\n+  const existingData = await readDataFromFile();\r\n+\r\n+  console.log(existingData)\r\n+\r\n+  existingData.push(newUser);\r\n+\r\n+  await writeDataToFile(existingData);\r\n+\r\n+  return res.send({ message: \"User Created Succesfully\", success: true, user: newUser });\r\n+});\r\n+\r\n+\r\n+app.get('/all-users' , async (req,res)=>{\r\n+\r\n+    const allUsers = await readDataFromFile()\r\n+    res.send({\r\n+        users: allUsers\r\n+    })\r\n+})\r\n+\r\n+app.listen(process.env.PORT, () => {\r\n+  console.log(`Server is Running on Port ${process.env.PORT}`);\r\n+});\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749638444295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n const express = require(\"express\");\r\n+\r\n const multer = require(\"multer\");\r\n const cloudinary = require(\"cloudinary\").v2;\r\n const fs = require(\"fs\").promises;\r\n const cors = require(\"cors\");\r\n"
+                },
+                {
+                    "date": 1749638451514,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n const express = require(\"express\");\r\n-\r\n+import expre\r\n const multer = require(\"multer\");\r\n const cloudinary = require(\"cloudinary\").v2;\r\n const fs = require(\"fs\").promises;\r\n const cors = require(\"cors\");\r\n"
+                },
+                {
+                    "date": 1749638456994,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n const express = require(\"express\");\r\n-import expre\r\n+import express from e\r\n const multer = require(\"multer\");\r\n const cloudinary = require(\"cloudinary\").v2;\r\n const fs = require(\"fs\").promises;\r\n const cors = require(\"cors\");\r\n"
+                },
+                {
+                    "date": 1749638464149,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n-const express = require(\"express\");\r\n-import express from e\r\n+\r\n+import express from 'express'\r\n const multer = require(\"multer\");\r\n const cloudinary = require(\"cloudinary\").v2;\r\n const fs = require(\"fs\").promises;\r\n const cors = require(\"cors\");\r\n"
+                },
+                {
+                    "date": 1749638469985,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n-\r\n import express from 'express'\r\n-const multer = require(\"multer\");\r\n+import mul\r\n const cloudinary = require(\"cloudinary\").v2;\r\n const fs = require(\"fs\").promises;\r\n const cors = require(\"cors\");\r\n \r\n"
+                },
+                {
+                    "date": 1749638476462,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import express from 'express'\r\n-import mul\r\n-const cloudinary = require(\"cloudinary\").v2;\r\n+import multer from 'multer';\r\n+import clou\r\n const fs = require(\"fs\").promises;\r\n const cors = require(\"cors\");\r\n \r\n require(\"dotenv\").config();\r\n"
+                },
+                {
+                    "date": 1749638482812,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import express from 'express'\r\n import multer from 'multer';\r\n-import clou\r\n+import cloudinary from\r\n const fs = require(\"fs\").promises;\r\n const cors = require(\"cors\");\r\n \r\n require(\"dotenv\").config();\r\n"
+                },
+                {
+                    "date": 1749638490850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import express from 'express'\r\n import multer from 'multer';\r\n-import cloudinary from\r\n+import cloudinary from 'cloudinary'\r\n const fs = require(\"fs\").promises;\r\n const cors = require(\"cors\");\r\n \r\n require(\"dotenv\").config();\r\n"
+                },
+                {
+                    "date": 1749638500754,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import express from 'express'\r\n import multer from 'multer';\r\n import cloudinary from 'cloudinary'\r\n-const fs = require(\"fs\").promises;\r\n+import\r\n const cors = require(\"cors\");\r\n \r\n require(\"dotenv\").config();\r\n \r\n"
+                },
+                {
+                    "date": 1749638506913,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import express from 'express'\r\n import multer from 'multer';\r\n import cloudinary from 'cloudinary'\r\n-import\r\n+import fs\r\n const cors = require(\"cors\");\r\n \r\n require(\"dotenv\").config();\r\n \r\n"
+                },
+                {
+                    "date": 1749638512649,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import express from 'express'\r\n import multer from 'multer';\r\n import cloudinary from 'cloudinary'\r\n-import fs\r\n+import fs from 'fs'\r\n const cors = require(\"cors\");\r\n \r\n require(\"dotenv\").config();\r\n \r\n"
+                },
+                {
+                    "date": 1749638518923,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import express from 'express'\r\n import multer from 'multer';\r\n import cloudinary from 'cloudinary'\r\n-import fs from 'fs'\r\n+import fs from 'fs'.Promise\r\n const cors = require(\"cors\");\r\n \r\n require(\"dotenv\").config();\r\n \r\n"
+                },
+                {
+                    "date": 1749638532193,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import express from 'express'\r\n import multer from 'multer';\r\n import cloudinary from 'cloudinary'\r\n-import fs from 'fs'.Promise\r\n+import fs from 'fs'.pro\r\n const cors = require(\"cors\");\r\n \r\n require(\"dotenv\").config();\r\n \r\n"
+                },
+                {
+                    "date": 1749638556539,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import express from 'express'\r\n import multer from 'multer';\r\n import cloudinary from 'cloudinary'\r\n-import fs from 'fs'.pro\r\n+import fs from 'fs/promises'\r\n const cors = require(\"cors\");\r\n \r\n require(\"dotenv\").config();\r\n \r\n"
+                },
+                {
+                    "date": 1749638575364,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import express from 'express'\r\n import multer from 'multer';\r\n import cloudinary from 'cloudinary'\r\n import fs from 'fs/promises'\r\n-const cors = require(\"cors\");\r\n+import co\r\n \r\n require(\"dotenv\").config();\r\n \r\n const app = express();\r\n"
+                },
+                {
+                    "date": 1749638582781,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import express from 'express'\r\n import multer from 'multer';\r\n import cloudinary from 'cloudinary'\r\n import fs from 'fs/promises'\r\n-import co\r\n+import cors from 'cors'\r\n \r\n require(\"dotenv\").config();\r\n \r\n const app = express();\r\n"
+                },
+                {
+                    "date": 1749638679078,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,10 @@\n import cloudinary from 'cloudinary'\r\n import fs from 'fs/promises'\r\n import cors from 'cors'\r\n \r\n-require(\"dotenv\").config();\r\n \r\n+\r\n const app = express();\r\n \r\n app.use(cors());\r\n app.use(express.json());\r\n"
+                },
+                {
+                    "date": 1749638685851,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,10 @@\n import cloudinary from 'cloudinary'\r\n import fs from 'fs/promises'\r\n import cors from 'cors'\r\n \r\n+import doten\r\n \r\n-\r\n const app = express();\r\n \r\n app.use(cors());\r\n app.use(express.json());\r\n"
+                },
+                {
+                    "date": 1749638707847,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,10 @@\n import multer from 'multer';\r\n import cloudinary from 'cloudinary'\r\n import fs from 'fs/promises'\r\n import cors from 'cors'\r\n+import { configDotenv } from 'dotenv';\r\n \r\n-import doten\r\n-\r\n const app = express();\r\n \r\n app.use(cors());\r\n app.use(express.json());\r\n"
+                },
+                {
+                    "date": 1749638825939,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,12 @@\n import multer from 'multer';\r\n import cloudinary from 'cloudinary'\r\n import fs from 'fs/promises'\r\n import cors from 'cors'\r\n-import { configDotenv } from 'dotenv';\r\n+import dotenv from \"dotenv\";\r\n+dotenv.config();\r\n \r\n+\r\n const app = express();\r\n \r\n app.use(cors());\r\n app.use(express.json());\r\n"
+                },
+                {
+                    "date": 1749639286789,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -83,14 +83,9 @@\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n   const { name, email } = req.body;\r\n \r\n-  if (!name || !email) {\r\n-    return res.send({\r\n-      message: \"Name and Image is Required\",\r\n-      success: false,\r\n-    });\r\n-  }\r\n+ \r\n \r\n   if (!req.file) {\r\n     return res.send({ success: false,  message: \"Image is required\" });\r\n   }\r\n"
+                },
+                {
+                    "date": 1749639293911,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -83,14 +83,8 @@\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n   const { name, email } = req.body;\r\n \r\n- \r\n-\r\n-  if (!req.file) {\r\n-    return res.send({ success: false,  message: \"Image is required\" });\r\n-  }\r\n-\r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n   );\r\n"
+                },
+                {
+                    "date": 1749639433700,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -80,9 +80,9 @@\n     console.log(error);\r\n   }\r\n };\r\n \r\n-app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n+app.post(\" i/user/create\", upload.single(\"image\"), async (req, res) => {\r\n   const { name, email } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n"
+                },
+                {
+                    "date": 1749641756190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -80,10 +80,10 @@\n     console.log(error);\r\n   }\r\n };\r\n \r\n-app.post(\" i/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { name, email } = req.body;\r\n+app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n+  const {  } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749641762282,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const {  } = req.body;\r\n+  const { pho } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749641769216,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { pho } = req.body;\r\n+  const { name, email } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642563956,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { name, email } = req.body;\r\n+  const { countr, email } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642573123,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { countr, email } = req.body;\r\n+  const { country, city, } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642580682,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city, } = req.body;\r\n+  const { country, city,course, } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642592668,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course, } = req.body;\r\n+  const { country, city,course,proficienevy } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642599644,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficienevy } = req.body;\r\n+  const { country, city,course,proficienc,y } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642607184,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficienc,y } = req.body;\r\n+  const { country, city,course,proficiency,fullNamey } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642614376,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficiency,fullNamey } = req.body;\r\n+  const { country, city,course,proficiency,fullName, } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642620329,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficiency,fullName, } = req.body;\r\n+  const { country, city,course,proficiency,fullName,fatherName } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642626129,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficiency,fullName,fatherName } = req.body;\r\n+  const { country, city,course,proficiency,fullName,fatherName,email, } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642631438,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficiency,fullName,fatherName,email, } = req.body;\r\n+  const { country, city,course,proficiency,fullName,fatherName,email,cnic, } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642642592,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficiency,fullName,fatherName,email,cnic, } = req.body;\r\n+  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fathernic } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642648242,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fathernic } = req.body;\r\n+  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic, } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642656473,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic, } = req.body;\r\n+  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic,dob,gender, } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642661789,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic,dob,gender, } = req.body;\r\n+  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic,dob,gender,qualification } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642672186,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic,dob,gender,qualification } = req.body;\r\n+  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic,dob,gender,qualification,hasLaptop } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642679621,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic,dob,gender,qualification,hasLaptop } = req.body;\r\n+  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic,dob,gender,qualification,hasLaptop,image } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.file.buffer,\r\n     req.file.originalname\r\n"
+                },
+                {
+                    "date": 1749642697652,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -84,9 +84,9 @@\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n   const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic,dob,gender,qualification,hasLaptop,image } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n-    req.file.buffer,\r\n+    req.image.buffer,\r\n     req.file.originalname\r\n   );\r\n \r\n   const newUser = {\r\n"
+                },
+                {
+                    "date": 1749642707552,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -84,10 +84,10 @@\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n   const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic,dob,gender,qualification,hasLaptop,image } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n-    req.image.buffer,\r\n-    req.file.originalname\r\n+    req.imageFile.buffer,\r\n+    req..originalname\r\n   );\r\n \r\n   const newUser = {\r\n     name: name,\r\n"
+                },
+                {
+                    "date": 1749642727017,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,13 +85,13 @@\n   const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic,dob,gender,qualification,hasLaptop,image } = req.body;\r\n \r\n   const uploadImage = await uploadImageInCloudinary(\r\n     req.imageFile.buffer,\r\n-    req..originalname\r\n+    req.imageFile.originalname\r\n   );\r\n \r\n   const newUser = {\r\n-    name: name,\r\n+    country: name,\r\n     email: email,\r\n     image: uploadImage.secure_url,\r\n     id: uploadImage.public_id,\r\n   };\r\n"
+                },
+                {
+                    "date": 1749642732365,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -89,9 +89,9 @@\n     req.imageFile.originalname\r\n   );\r\n \r\n   const newUser = {\r\n-    country: name,\r\n+    country: country,\r\n     email: email,\r\n     image: uploadImage.secure_url,\r\n     id: uploadImage.public_id,\r\n   };\r\n"
+                },
+                {
+                    "date": 1749642806534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,34 +81,79 @@\n   }\r\n };\r\n \r\n app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n-  const { country, city,course,proficiency,fullName,fatherName,email,cnic,phone,fatherNic,dob,gender,qualification,hasLaptop,image } = req.body;\r\n+  try {\r\n+    const {\r\n+      country,\r\n+      city,\r\n+      course,\r\n+      proficiency,\r\n+      fullName,\r\n+      fatherName,\r\n+      email,\r\n+      cnic,\r\n+      phone,\r\n+      fatherNic,\r\n+      dob,\r\n+      gender,\r\n+      qualification,\r\n+      hasLaptop\r\n+    } = req.body;\r\n \r\n-  const uploadImage = await uploadImageInCloudinary(\r\n-    req.imageFile.buffer,\r\n-    req.imageFile.originalname\r\n-  );\r\n+    // Check if file exists\r\n+    if (!req.file) {\r\n+      return res.status(400).json({ success: false, message: \"Image file is required\" });\r\n+    }\r\n \r\n-  const newUser = {\r\n-    country: country,\r\n-    email: email,\r\n-    image: uploadImage.secure_url,\r\n-    id: uploadImage.public_id,\r\n-  };\r\n+    // Upload image to Cloudinary\r\n+    const uploadImage = await uploadImageInCloudinary(\r\n+      req.file.buffer,\r\n+      req.file.originalname\r\n+    );\r\n \r\n-  const existingData = await readDataFromFile();\r\n+    // Prepare new user object\r\n+    const newUser = {\r\n+      country,\r\n+      city,\r\n+      course,\r\n+      proficiency,\r\n+      fullName,\r\n+      fatherName,\r\n+      email,\r\n+      cnic,\r\n+      phone,\r\n+      fatherNic,\r\n+      dob,\r\n+      gender,\r\n+      qualification,\r\n+      hasLaptop,\r\n+      image: uploadImage.secure_url,\r\n+      id: uploadImage.public_id,\r\n+    };\r\n \r\n-  console.log(existingData)\r\n+    // Read existing users\r\n+    const existingData = await readDataFromFile();\r\n \r\n-  existingData.push(newUser);\r\n+    // Add new user\r\n+    existingData.push(newUser);\r\n \r\n-  await writeDataToFile(existingData);\r\n+    // Write updated data\r\n+    await writeDataToFile(existingData);\r\n \r\n-  return res.send({ message: \"User Created Succesfully\", success: true, user: newUser });\r\n+    // Send response\r\n+    return res.status(200).json({\r\n+      message: \"User Created Successfully\",\r\n+      success: true,\r\n+      user: newUser,\r\n+    });\r\n+\r\n+  } catch (error) {\r\n+    console.error(\"Error in /api/user/create:\", error);\r\n+    return res.status(500).json({ success: false, message: \"Internal Server Error\" });\r\n+  }\r\n });\r\n \r\n-\r\n app.get('/all-users' , async (req,res)=>{\r\n \r\n     const allUsers = await readDataFromFile()\r\n     res.send({\r\n"
+                },
+                {
+                    "date": 1749722182029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n \r\n \r\n const app = express();\r\n \r\n+app.u\r\n app.use(cors());\r\n app.use(express.json());\r\n \r\n // First Initialize Multer\r\n"
+                },
+                {
+                    "date": 1749722190928,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n \r\n \r\n const app = express();\r\n \r\n-app.u\r\n+app.use()\r\n app.use(cors());\r\n app.use(express.json());\r\n \r\n // First Initialize Multer\r\n"
+                },
+                {
+                    "date": 1749722197530,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n \r\n \r\n const app = express();\r\n \r\n-app.use()\r\n+app.use(express)\r\n app.use(cors());\r\n app.use(express.json());\r\n \r\n // First Initialize Multer\r\n"
+                },
+                {
+                    "date": 1749722204044,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n \r\n \r\n const app = express();\r\n \r\n-app.use(express)\r\n+app.use(express.urlencoded({}))\r\n app.use(cors());\r\n app.use(express.json());\r\n \r\n // First Initialize Multer\r\n"
+                },
+                {
+                    "date": 1749722213036,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n \r\n \r\n const app = express();\r\n \r\n-app.use(express.urlencoded({}))\r\n+app.use(express.urlencoded({ ex}))\r\n app.use(cors());\r\n app.use(express.json());\r\n \r\n // First Initialize Multer\r\n"
+                },
+                {
+                    "date": 1749722218725,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n \r\n \r\n const app = express();\r\n \r\n-app.use(express.urlencoded({ ex}))\r\n+app.use(express.urlencoded({ extended:false}))\r\n app.use(cors());\r\n app.use(express.json());\r\n \r\n // First Initialize Multer\r\n"
+                },
+                {
+                    "date": 1749722625124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n     console.log(error);\r\n   }\r\n };\r\n \r\n-app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n+app.post(\"/a\", upload.single(\"image\"), async (req, res) => {\r\n   try {\r\n     const {\r\n       country,\r\n       city,\r\n"
+                },
+                {
+                    "date": 1749722636228,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n     console.log(error);\r\n   }\r\n };\r\n \r\n-app.post(\"/a\", upload.single(\"image\"), async (req, res) => {\r\n+app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n   try {\r\n     const {\r\n       country,\r\n       city,\r\n"
+                },
+                {
+                    "date": 1749723845584,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -122,9 +122,9 @@\n       fatherName,\r\n       email,\r\n       cnic,\r\n       phone,\r\n-      fatherNic,\r\n+      fatherCNic,\r\n       dob,\r\n       gender,\r\n       qualification,\r\n       hasLaptop,\r\n"
+                },
+                {
+                    "date": 1749723857121,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -93,9 +93,9 @@\n       fatherName,\r\n       email,\r\n       cnic,\r\n       phone,\r\n-      fatherNic,\r\n+      fatherCNic,\r\n       dob,\r\n       gender,\r\n       qualification,\r\n       hasLaptop\r\n@@ -122,9 +122,9 @@\n       fatherName,\r\n       email,\r\n       cnic,\r\n       phone,\r\n-      fatherCNic,\r\n+      fatherCnic,\r\n       dob,\r\n       gender,\r\n       qualification,\r\n       hasLaptop,\r\n"
+                },
+                {
+                    "date": 1749724482864,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,89 +1,100 @@\n-import express from 'express'\r\n+import express from 'express';\r\n import multer from 'multer';\r\n-import cloudinary from 'cloudinary'\r\n-import fs from 'fs/promises'\r\n-import cors from 'cors'\r\n-import dotenv from \"dotenv\";\r\n+import cloudinary from 'cloudinary';\r\n+import fs from 'fs/promises';\r\n+import path from 'path';\r\n+import cors from 'cors';\r\n+import dotenv from 'dotenv';\r\n+\r\n dotenv.config();\r\n \r\n-\r\n const app = express();\r\n \r\n-app.use(express.urlencoded({ extended:false}))\r\n+app.use(express.urlencoded({ extended: false }));\r\n app.use(cors());\r\n app.use(express.json());\r\n \r\n-// First Initialize Multer\r\n+// 🧠 Setup file path\r\n+const dataPath = path.join(process.cwd(), 'data.json');\r\n \r\n+// ✅ Check if file exists, create if not\r\n+const ensureFileExists = async () => {\r\n+  try {\r\n+    await fs.access(dataPath);\r\n+  } catch {\r\n+    await fs.writeFile(dataPath, '[]');\r\n+  }\r\n+};\r\n+await ensureFileExists(); // Call it once when app starts\r\n+\r\n+// 🖼️ Setup multer (image upload)\r\n const storage = multer.memoryStorage();\r\n \r\n const upload = multer({\r\n+  storage,\r\n   limits: {\r\n-    fileSize: 3 * 1024 * 1024,\r\n+    fileSize: 3 * 1024 * 1024, // 3MB\r\n   },\r\n   fileFilter: (req, file, cb) => {\r\n     if (file.mimetype.startsWith(\"image/\")) {\r\n       cb(null, true);\r\n     } else {\r\n-      cb(new Error(\"Only Image is Required\"), false);\r\n+      cb(new Error(\"Only image files are allowed\"), false);\r\n     }\r\n   },\r\n-  storage: storage,\r\n });\r\n \r\n-// Configure Cloudinary\r\n-\r\n+// 🌩️ Configure Cloudinary\r\n cloudinary.config({\r\n   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,\r\n   api_key: process.env.CLOUDINARY_API_KEY,\r\n   api_secret: process.env.CLOUDINARY_API_SECRET,\r\n });\r\n \r\n-//\r\n-\r\n+// 🧠 Upload image to Cloudinary\r\n const uploadImageInCloudinary = (buffer, fileName) => {\r\n-  return new Promise((res, rej) => {\r\n-    cloudinary.uploader\r\n-      .upload_stream(\r\n-        {\r\n-          resource_type: \"image\",\r\n-          public_id: `${Date.now()}_${fileName}`,\r\n-          folder: \"users_upload\",\r\n-        },\r\n-        (error, result) => {\r\n-          if (error) {\r\n-            rej(error);\r\n-          } else {\r\n-            res(result);\r\n-          }\r\n+  return new Promise((resolve, reject) => {\r\n+    cloudinary.uploader.upload_stream(\r\n+      {\r\n+        resource_type: \"image\",\r\n+        public_id: `${Date.now()}_${fileName}`,\r\n+        folder: \"users_upload\",\r\n+      },\r\n+      (error, result) => {\r\n+        if (error) {\r\n+          reject(error);\r\n+        } else {\r\n+          resolve(result);\r\n         }\r\n-      )\r\n-      .end(buffer);\r\n+      }\r\n+    ).end(buffer);\r\n   });\r\n };\r\n \r\n+// 📥 Read JSON File\r\n const readDataFromFile = async () => {\r\n   try {\r\n-    const data = await fs.readFile(\"data.json\", \"utf-8\");\r\n+    const data = await fs.readFile(dataPath, 'utf-8');\r\n     return JSON.parse(data);\r\n   } catch (error) {\r\n-    console.log(error);\r\n+    console.log(\"Error reading data file:\", error);\r\n     return [];\r\n   }\r\n };\r\n \r\n+// 📤 Write JSON File\r\n const writeDataToFile = async (data) => {\r\n   try {\r\n-    await fs.writeFile(\"data.json\", JSON.stringify(data, null, 2));\r\n-    console.log(\"Data insert into the file\");\r\n+    await fs.writeFile(dataPath, JSON.stringify(data, null, 2));\r\n+    console.log(\"✅ Data saved successfully\");\r\n   } catch (error) {\r\n-    console.log(\"Something went wrong while writing Data\");\r\n-    console.log(error);\r\n+    console.log(\"❌ Error writing data file:\", error);\r\n   }\r\n };\r\n \r\n-app.post(\"/api/user/create\", upload.single(\"image\"), async (req, res) => {\r\n+// 🧾 Create User Route\r\n+app.post('/api/user/create', upload.single('image'), async (req, res) => {\r\n   try {\r\n     const {\r\n       country,\r\n       city,\r\n@@ -93,27 +104,22 @@\n       fatherName,\r\n       email,\r\n       cnic,\r\n       phone,\r\n-      fatherCNic,\r\n+      fatherCnic,\r\n       dob,\r\n       gender,\r\n       qualification,\r\n       hasLaptop\r\n     } = req.body;\r\n \r\n-    // Check if file exists\r\n     if (!req.file) {\r\n       return res.status(400).json({ success: false, message: \"Image file is required\" });\r\n     }\r\n \r\n-    // Upload image to Cloudinary\r\n-    const uploadImage = await uploadImageInCloudinary(\r\n-      req.file.buffer,\r\n-      req.file.originalname\r\n-    );\r\n+    console.log(\"📤 Uploading to Cloudinary...\");\r\n+    const uploadedImage = await uploadImageInCloudinary(req.file.buffer, req.file.originalname);\r\n \r\n-    // Prepare new user object\r\n     const newUser = {\r\n       country,\r\n       city,\r\n       course,\r\n@@ -127,41 +133,34 @@\n       dob,\r\n       gender,\r\n       qualification,\r\n       hasLaptop,\r\n-      image: uploadImage.secure_url,\r\n-      id: uploadImage.public_id,\r\n+      image: uploadedImage.secure_url,\r\n+      id: uploadedImage.public_id\r\n     };\r\n \r\n-    // Read existing users\r\n     const existingData = await readDataFromFile();\r\n-\r\n-    // Add new user\r\n     existingData.push(newUser);\r\n-\r\n-    // Write updated data\r\n     await writeDataToFile(existingData);\r\n \r\n-    // Send response\r\n     return res.status(200).json({\r\n       message: \"User Created Successfully\",\r\n       success: true,\r\n       user: newUser,\r\n     });\r\n-\r\n   } catch (error) {\r\n-    console.error(\"Error in /api/user/create:\", error);\r\n+    console.error(\"❌ Error in /api/user/create:\", error);\r\n     return res.status(500).json({ success: false, message: \"Internal Server Error\" });\r\n   }\r\n });\r\n \r\n-app.get('/all-users' , async (req,res)=>{\r\n+// 👀 Get all users\r\n+app.get('/all-users', async (req, res) => {\r\n+  const allUsers = await readDataFromFile();\r\n+  res.send({ users: allUsers });\r\n+});\r\n \r\n-    const allUsers = await readDataFromFile()\r\n\\ No newline at end of file\n-    res.send({\r\n-        users: allUsers\r\n-    })\r\n-})\r\n-\r\n-app.listen(process.env.PORT, () => {\r\n-  console.log(`Server is Running on Port ${process.env.PORT}`);\r\n-});\n+// 🚀 Start Server\r\n+const PORT = process.env.PORT || 5000;\r\n+app.listen(PORT, () => {\r\n+  console.log(`🚀 Server is running on http://localhost:${PORT}`);\r\n+});\r\n"
+                },
+                {
+                    "date": 1749724503285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -159,8 +159,8 @@\n   res.send({ users: allUsers });\r\n });\r\n \r\n // 🚀 Start Server\r\n-const PORT = process.env.PORT || 5000;\r\n+const PORT = process.env.PORT;\r\n app.listen(PORT, () => {\r\n   console.log(`🚀 Server is running on http://localhost:${PORT}`);\r\n });\r\n"
+                },
+                {
+                    "date": 1749724954236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,12 @@\n import fs from 'fs/promises';\r\n import path from 'path';\r\n import cors from 'cors';\r\n import dotenv from 'dotenv';\r\n+import path from 'path';\r\n+const filePath = path.join(process.cwd(), 'data.json');\r\n \r\n+\r\n dotenv.config();\r\n \r\n const app = express();\r\n \r\n"
+                },
+                {
+                    "date": 1749724999974,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,12 +4,12 @@\n import fs from 'fs/promises';\r\n import path from 'path';\r\n import cors from 'cors';\r\n import dotenv from 'dotenv';\r\n-import path from 'path';\r\n-const filePath = path.join(process.cwd(), 'data.json');\r\n \r\n \r\n+\r\n+\r\n dotenv.config();\r\n \r\n const app = express();\r\n \r\n"
+                },
+                {
+                    "date": 1749725771721,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,169 +1,188 @@\n import express from 'express';\r\n import multer from 'multer';\r\n import cloudinary from 'cloudinary';\r\n+import { v2 as cloudinaryV2 } from 'cloudinary';\r\n import fs from 'fs/promises';\r\n-import path from 'path';\r\n import cors from 'cors';\r\n import dotenv from 'dotenv';\r\n+import path from 'path';\r\n+import { fileURLToPath } from 'url';\r\n \r\n-\r\n-\r\n-\r\n+// Configure environment variables\r\n dotenv.config();\r\n \r\n+// Initialize Express\r\n const app = express();\r\n \r\n+// Get directory path\r\n+const __filename = fileURLToPath(import.meta.url);\r\n+const __dirname = path.dirname(__filename);\r\n+const dataFilePath = path.join(__dirname, 'data.json');\r\n+\r\n+// Middleware\r\n app.use(express.urlencoded({ extended: false }));\r\n app.use(cors());\r\n app.use(express.json());\r\n \r\n-// 🧠 Setup file path\r\n-const dataPath = path.join(process.cwd(), 'data.json');\r\n-\r\n-// ✅ Check if file exists, create if not\r\n-const ensureFileExists = async () => {\r\n-  try {\r\n-    await fs.access(dataPath);\r\n-  } catch {\r\n-    await fs.writeFile(dataPath, '[]');\r\n-  }\r\n-};\r\n-await ensureFileExists(); // Call it once when app starts\r\n-\r\n-// 🖼️ Setup multer (image upload)\r\n+// Initialize Multer for file uploads\r\n const storage = multer.memoryStorage();\r\n-\r\n const upload = multer({\r\n-  storage,\r\n   limits: {\r\n-    fileSize: 3 * 1024 * 1024, // 3MB\r\n+    fileSize: 3 * 1024 * 1024, // 3MB limit\r\n   },\r\n   fileFilter: (req, file, cb) => {\r\n-    if (file.mimetype.startsWith(\"image/\")) {\r\n+    if (file.mimetype.startsWith('image/')) {\r\n       cb(null, true);\r\n     } else {\r\n-      cb(new Error(\"Only image files are allowed\"), false);\r\n+      cb(new Error('Only images are allowed'), false);\r\n     }\r\n   },\r\n+  storage: storage,\r\n });\r\n \r\n-// 🌩️ Configure Cloudinary\r\n-cloudinary.config({\r\n+// Configure Cloudinary\r\n+cloudinaryV2.config({\r\n   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,\r\n   api_key: process.env.CLOUDINARY_API_KEY,\r\n   api_secret: process.env.CLOUDINARY_API_SECRET,\r\n });\r\n \r\n-// 🧠 Upload image to Cloudinary\r\n-const uploadImageInCloudinary = (buffer, fileName) => {\r\n+// Helper function to initialize data file\r\n+async function initializeDataFile() {\r\n+  try {\r\n+    await fs.access(dataFilePath);\r\n+    console.log('Data file exists');\r\n+  } catch {\r\n+    await fs.writeFile(dataFilePath, '[]');\r\n+    console.log('Created new data file');\r\n+  }\r\n+}\r\n+\r\n+// Upload image to Cloudinary\r\n+const uploadImageToCloudinary = (buffer) => {\r\n   return new Promise((resolve, reject) => {\r\n-    cloudinary.uploader.upload_stream(\r\n+    const uploadStream = cloudinaryV2.uploader.upload_stream(\r\n       {\r\n-        resource_type: \"image\",\r\n-        public_id: `${Date.now()}_${fileName}`,\r\n-        folder: \"users_upload\",\r\n+        folder: 'user_uploads',\r\n+        resource_type: 'auto',\r\n       },\r\n       (error, result) => {\r\n-        if (error) {\r\n-          reject(error);\r\n-        } else {\r\n-          resolve(result);\r\n-        }\r\n+        if (error) return reject(error);\r\n+        resolve(result);\r\n       }\r\n-    ).end(buffer);\r\n+    );\r\n+    \r\n+    uploadStream.end(buffer);\r\n   });\r\n };\r\n \r\n-// 📥 Read JSON File\r\n+// Read data from file\r\n const readDataFromFile = async () => {\r\n   try {\r\n-    const data = await fs.readFile(dataPath, 'utf-8');\r\n+    const data = await fs.readFile(dataFilePath, 'utf-8');\r\n     return JSON.parse(data);\r\n   } catch (error) {\r\n-    console.log(\"Error reading data file:\", error);\r\n+    console.error('Error reading data file:', error);\r\n     return [];\r\n   }\r\n };\r\n \r\n-// 📤 Write JSON File\r\n+// Write data to file\r\n const writeDataToFile = async (data) => {\r\n   try {\r\n-    await fs.writeFile(dataPath, JSON.stringify(data, null, 2));\r\n-    console.log(\"✅ Data saved successfully\");\r\n+    await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2));\r\n+    console.log('Data successfully written to file');\r\n   } catch (error) {\r\n-    console.log(\"❌ Error writing data file:\", error);\r\n+    console.error('Error writing to data file:', error);\r\n+    throw error;\r\n   }\r\n };\r\n \r\n-// 🧾 Create User Route\r\n+// Create user endpoint\r\n app.post('/api/user/create', upload.single('image'), async (req, res) => {\r\n   try {\r\n-    const {\r\n-      country,\r\n-      city,\r\n-      course,\r\n-      proficiency,\r\n-      fullName,\r\n-      fatherName,\r\n-      email,\r\n-      cnic,\r\n-      phone,\r\n-      fatherCnic,\r\n-      dob,\r\n-      gender,\r\n-      qualification,\r\n-      hasLaptop\r\n-    } = req.body;\r\n+    // Validate required fields\r\n+    const requiredFields = [\r\n+      'country', 'city', 'course', 'proficiency', \r\n+      'fullName', 'fatherName', 'email', 'cnic',\r\n+      'phone', 'dob', 'gender', 'qualification', 'hasLaptop'\r\n+    ];\r\n+    \r\n+    for (const field of requiredFields) {\r\n+      if (!req.body[field]) {\r\n+        return res.status(400).json({\r\n+          success: false,\r\n+          message: `${field} is required`\r\n+        });\r\n+      }\r\n+    }\r\n \r\n     if (!req.file) {\r\n-      return res.status(400).json({ success: false, message: \"Image file is required\" });\r\n+      return res.status(400).json({\r\n+        success: false,\r\n+        message: 'Image is required'\r\n+      });\r\n     }\r\n \r\n-    console.log(\"📤 Uploading to Cloudinary...\");\r\n-    const uploadedImage = await uploadImageInCloudinary(req.file.buffer, req.file.originalname);\r\n+    // Upload image to Cloudinary\r\n+    const imageResult = await uploadImageToCloudinary(req.file.buffer);\r\n \r\n+    // Create user object\r\n     const newUser = {\r\n-      country,\r\n-      city,\r\n-      course,\r\n-      proficiency,\r\n-      fullName,\r\n-      fatherName,\r\n-      email,\r\n-      cnic,\r\n-      phone,\r\n-      fatherCnic,\r\n-      dob,\r\n-      gender,\r\n-      qualification,\r\n-      hasLaptop,\r\n-      image: uploadedImage.secure_url,\r\n-      id: uploadedImage.public_id\r\n+      id: Date.now().toString(),\r\n+      ...req.body,\r\n+      fatherNic: req.body.fatherCnic || null, // Handle optional field\r\n+      imageUrl: imageResult.secure_url,\r\n+      imagePublicId: imageResult.public_id,\r\n+      createdAt: new Date().toISOString()\r\n     };\r\n \r\n+    // Get existing data\r\n     const existingData = await readDataFromFile();\r\n+\r\n+    // Add new user\r\n     existingData.push(newUser);\r\n+\r\n+    // Save to file\r\n     await writeDataToFile(existingData);\r\n \r\n-    return res.status(200).json({\r\n-      message: \"User Created Successfully\",\r\n+    // Return success response\r\n+    return res.status(201).json({\r\n       success: true,\r\n-      user: newUser,\r\n+      message: 'User created successfully',\r\n+      user: newUser\r\n     });\r\n+\r\n   } catch (error) {\r\n-    console.error(\"❌ Error in /api/user/create:\", error);\r\n-    return res.status(500).json({ success: false, message: \"Internal Server Error\" });\r\n+    console.error('Error creating user:', error);\r\n+    return res.status(500).json({\r\n+      success: false,\r\n+      message: 'Internal server error'\r\n+    });\r\n   }\r\n });\r\n \r\n-// 👀 Get all users\r\n-app.get('/all-users', async (req, res) => {\r\n-  const allUsers = await readDataFromFile();\r\n-  res.send({ users: allUsers });\r\n+// Get all users endpoint\r\n+app.get('/api/users', async (req, res) => {\r\n+  try {\r\n+    const users = await readDataFromFile();\r\n+    return res.json({\r\n+      success: true,\r\n+      users\r\n+    });\r\n+  } catch (error) {\r\n+    console.error('Error fetching users:', error);\r\n+    return res.status(500).json({\r\n+      success: false,\r\n+      message: 'Internal server error'\r\n+    });\r\n+  }\r\n });\r\n \r\n-// 🚀 Start Server\r\n-const PORT = process.env.PORT;\r\n-app.listen(PORT, () => {\r\n-  console.log(`🚀 Server is running on http://localhost:${PORT}`);\r\n-});\r\n+// Initialize data file and start server\r\n+initializeDataFile().then(() => {\r\n+  const PORT = process.env.PORT || 5000;\r\n+  app.listen(PORT, () => {\r\n+    console.log(`Server running on port ${PORT}`);\r\n+  });\r\n+});\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749727597786,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -167,9 +167,9 @@\n   try {\r\n     const users = await readDataFromFile();\r\n     return res.json({\r\n       success: true,\r\n-      users\r\n+      users \r\n     });\r\n   } catch (error) {\r\n     console.error('Error fetching users:', error);\r\n     return res.status(500).json({\r\n"
+                },
+                {
+                    "date": 1749727607790,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -162,24 +162,41 @@\n   }\r\n });\r\n \r\n // Get all users endpoint\r\n-app.get('/api/users', async (req, res) => {\r\n+// app.get('/api/users', async (req, res) => {\r\n+//   try {\r\n+//     const users = await readDataFromFile();\r\n+//     return res.json({\r\n+//       success: true,\r\n+//       users \r\n+//     });\r\n+//   } catch (error) {\r\n+//     console.error('Error fetching users:', error);\r\n+//     return res.status(500).json({\r\n+//       success: false,\r\n+//       message: 'Internal server error'\r\n+//     });\r\n+//   }\r\n+// });\r\n+\r\n+app.get('/api/user/:cnic', async (req, res) => {\r\n   try {\r\n     const users = await readDataFromFile();\r\n-    return res.json({\r\n-      success: true,\r\n-      users \r\n-    });\r\n+    const user = users.find(u => u.cnic === req.params.cnic);\r\n+\r\n+    if (!user) {\r\n+      return res.status(404).json({ success: false, message: \"User not found\" });\r\n+    }\r\n+\r\n+    return res.json({ success: true, user });\r\n   } catch (error) {\r\n-    console.error('Error fetching users:', error);\r\n-    return res.status(500).json({\r\n-      success: false,\r\n-      message: 'Internal server error'\r\n-    });\r\n+    console.error('Error fetching user:', error);\r\n+    return res.status(500).json({ success: false, message: \"Internal server error\" });\r\n   }\r\n });\r\n \r\n+\r\n // Initialize data file and start server\r\n initializeDataFile().then(() => {\r\n   const PORT = process.env.PORT || 5000;\r\n   app.listen(PORT, () => {\r\n"
+                },
+                {
+                    "date": 1749847614637,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n import dotenv from 'dotenv';\r\n import path from 'path';\r\n import { fileURLToPath } from 'url';\r\n \r\n-// Configure environment variables\r\n+\r\n dotenv.config();\r\n \r\n // Initialize Express\r\n const app = express();\r\n"
+                },
+                {
+                    "date": 1749847624384,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,13 +9,10 @@\n import { fileURLToPath } from 'url';\r\n \r\n \r\n dotenv.config();\r\n-\r\n-// Initialize Express\r\n const app = express();\r\n \r\n-// Get directory path\r\n const __filename = fileURLToPath(import.meta.url);\r\n const __dirname = path.dirname(__filename);\r\n const dataFilePath = path.join(__dirname, 'data.json');\r\n \r\n"
+                },
+                {
+                    "date": 1749847648073,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,9 @@\n \r\n dotenv.config();\r\n const app = express();\r\n \r\n+// Get directory path\r\n const __filename = fileURLToPath(import.meta.url);\r\n const __dirname = path.dirname(__filename);\r\n const dataFilePath = path.join(__dirname, 'data.json');\r\n \r\n"
+                },
+                {
+                    "date": 1749847659880,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n \r\n dotenv.config();\r\n const app = express();\r\n \r\n-// Get directory path\r\n+// ***********Get directory path************\r\n const __filename = fileURLToPath(import.meta.url);\r\n const __dirname = path.dirname(__filename);\r\n const dataFilePath = path.join(__dirname, 'data.json');\r\n \r\n"
+                },
+                {
+                    "date": 1749847670272,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,8 @@\n const __filename = fileURLToPath(import.meta.url);\r\n const __dirname = path.dirname(__filename);\r\n const dataFilePath = path.join(__dirname, 'data.json');\r\n \r\n-// Middleware\r\n app.use(express.urlencoded({ extended: false }));\r\n app.use(cors());\r\n app.use(express.json());\r\n \r\n"
+                },
+                {
+                    "date": 1749847678824,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n app.use(express.urlencoded({ extended: false }));\r\n app.use(cors());\r\n app.use(express.json());\r\n \r\n-// Initialize Multer for file uploads\r\n+// ***********Initialize Multer for file uploads*******\r\n const storage = multer.memoryStorage();\r\n const upload = multer({\r\n   limits: {\r\n     fileSize: 3 * 1024 * 1024, // 3MB limit\r\n"
+                },
+                {
+                    "date": 1749847691991,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n   },\r\n   storage: storage,\r\n });\r\n \r\n-// Configure Cloudinary\r\n+// *************Configure Cloudinary\r\n cloudinaryV2.config({\r\n   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,\r\n   api_key: process.env.CLOUDINARY_API_KEY,\r\n   api_secret: process.env.CLOUDINARY_API_SECRET,\r\n"
+                },
+                {
+                    "date": 1749847730732,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,16 +36,16 @@\n   },\r\n   storage: storage,\r\n });\r\n \r\n-// *************Configure Cloudinary\r\n+// **************Configure Cloudinary*************\r\n cloudinaryV2.config({\r\n   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,\r\n   api_key: process.env.CLOUDINARY_API_KEY,\r\n   api_secret: process.env.CLOUDINARY_API_SECRET,\r\n });\r\n \r\n-// Helper function to initialize data file\r\n+// ***********Helper function to initialize data file**********\r\n async function initializeDataFile() {\r\n   try {\r\n     await fs.access(dataFilePath);\r\n     console.log('Data file exists');\r\n"
+                },
+                {
+                    "date": 1749847773171,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,9 +54,9 @@\n     console.log('Created new data file');\r\n   }\r\n }\r\n \r\n-// Upload image to Cloudinary\r\n+// **************Upload image to Cloudinary************\r\n const uploadImageToCloudinary = (buffer) => {\r\n   return new Promise((resolve, reject) => {\r\n     const uploadStream = cloudinaryV2.uploader.upload_stream(\r\n       {\r\n"
+                },
+                {
+                    "date": 1749847780565,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,9 +72,9 @@\n     uploadStream.end(buffer);\r\n   });\r\n };\r\n \r\n-// Read data from file\r\n+// ***************Read data from file****************\r\n const readDataFromFile = async () => {\r\n   try {\r\n     const data = await fs.readFile(dataFilePath, 'utf-8');\r\n     return JSON.parse(data);\r\n"
+                },
+                {
+                    "date": 1749847786744,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -83,9 +83,9 @@\n     return [];\r\n   }\r\n };\r\n \r\n-// Write data to file\r\n+// *****************Write data to file\r\n const writeDataToFile = async (data) => {\r\n   try {\r\n     await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2));\r\n     console.log('Data successfully written to file');\r\n"
+                },
+                {
+                    "date": 1749847797820,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -83,9 +83,9 @@\n     return [];\r\n   }\r\n };\r\n \r\n-// *****************Write data to file\r\n+// *****************Write data to file******************\r\n const writeDataToFile = async (data) => {\r\n   try {\r\n     await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2));\r\n     console.log('Data successfully written to file');\r\n@@ -94,9 +94,9 @@\n     throw error;\r\n   }\r\n };\r\n \r\n-// Create user endpoint\r\n+// Create \r\n app.post('/api/user/create', upload.single('image'), async (req, res) => {\r\n   try {\r\n     // Validate required fields\r\n     const requiredFields = [\r\n"
+                },
+                {
+                    "date": 1749847803932,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -94,9 +94,9 @@\n     throw error;\r\n   }\r\n };\r\n \r\n-// Create \r\n+// Create API\r\n app.post('/api/user/create', upload.single('image'), async (req, res) => {\r\n   try {\r\n     // Validate required fields\r\n     const requiredFields = [\r\n"
+                },
+                {
+                    "date": 1749847815350,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -94,9 +94,9 @@\n     throw error;\r\n   }\r\n };\r\n \r\n-// Create API\r\n+// ********************Create Post API****************\r\n app.post('/api/user/create', upload.single('image'), async (req, res) => {\r\n   try {\r\n     // Validate required fields\r\n     const requiredFields = [\r\n"
+                },
+                {
+                    "date": 1749847828688,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -97,9 +97,8 @@\n \r\n // ********************Create Post API****************\r\n app.post('/api/user/create', upload.single('image'), async (req, res) => {\r\n   try {\r\n-    // Validate required fields\r\n     const requiredFields = [\r\n       'country', 'city', 'course', 'proficiency', \r\n       'fullName', 'fatherName', 'email', 'cnic',\r\n       'phone', 'dob', 'gender', 'qualification', 'hasLaptop'\r\n@@ -120,9 +119,8 @@\n         message: 'Image is required'\r\n       });\r\n     }\r\n \r\n-    // Upload image to Cloudinary\r\n     const imageResult = await uploadImageToCloudinary(req.file.buffer);\r\n \r\n     // Create user object\r\n     const newUser = {\r\n"
+                },
+                {
+                    "date": 1749847847367,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -120,10 +120,8 @@\n       });\r\n     }\r\n \r\n     const imageResult = await uploadImageToCloudinary(req.file.buffer);\r\n-\r\n-    // Create user object\r\n     const newUser = {\r\n       id: Date.now().toString(),\r\n       ...req.body,\r\n       fatherNic: req.body.fatherCnic || null, // Handle optional field\r\n@@ -131,9 +129,8 @@\n       imagePublicId: imageResult.public_id,\r\n       createdAt: new Date().toISOString()\r\n     };\r\n \r\n-    // Get existing data\r\n     const existingData = await readDataFromFile();\r\n \r\n     // Add new user\r\n     existingData.push(newUser);\r\n"
+                },
+                {
+                    "date": 1749847855412,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -130,13 +130,10 @@\n       createdAt: new Date().toISOString()\r\n     };\r\n \r\n     const existingData = await readDataFromFile();\r\n-\r\n-    // Add new user\r\n     existingData.push(newUser);\r\n \r\n-    // Save to file\r\n     await writeDataToFile(existingData);\r\n \r\n     // Return success response\r\n     return res.status(201).json({\r\n"
+                },
+                {
+                    "date": 1749847869451,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -134,9 +134,9 @@\n     existingData.push(newUser);\r\n \r\n     await writeDataToFile(existingData);\r\n \r\n-    // Return success response\r\n+\r\n     return res.status(201).json({\r\n       success: true,\r\n       message: 'User created successfully',\r\n       user: newUser\r\n@@ -150,24 +150,8 @@\n     });\r\n   }\r\n });\r\n \r\n-// Get all users endpoint\r\n-// app.get('/api/users', async (req, res) => {\r\n-//   try {\r\n-//     const users = await readDataFromFile();\r\n-//     return res.json({\r\n-//       success: true,\r\n-//       users \r\n-//     });\r\n-//   } catch (error) {\r\n-//     console.error('Error fetching users:', error);\r\n-//     return res.status(500).json({\r\n-//       success: false,\r\n-//       message: 'Internal server error'\r\n-//     });\r\n-//   }\r\n-// });\r\n \r\n app.get('/api/user/:cnic', async (req, res) => {\r\n   try {\r\n     const users = await readDataFromFile();\r\n"
+                },
+                {
+                    "date": 1749847881034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -150,9 +150,9 @@\n     });\r\n   }\r\n });\r\n \r\n-\r\n+Get aPI\r\n app.get('/api/user/:cnic', async (req, res) => {\r\n   try {\r\n     const users = await readDataFromFile();\r\n     const user = users.find(u => u.cnic === req.params.cnic);\r\n"
+                },
+                {
+                    "date": 1749847899185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -150,9 +150,9 @@\n     });\r\n   }\r\n });\r\n \r\n-Get aPI\r\n+Create Get API\r\n app.get('/api/user/:cnic', async (req, res) => {\r\n   try {\r\n     const users = await readDataFromFile();\r\n     const user = users.find(u => u.cnic === req.params.cnic);\r\n"
+                },
+                {
+                    "date": 1749847905074,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -150,9 +150,9 @@\n     });\r\n   }\r\n });\r\n \r\n-Create Get API\r\n+// ***********************Create Get API*****************\r\n app.get('/api/user/:cnic', async (req, res) => {\r\n   try {\r\n     const users = await readDataFromFile();\r\n     const user = users.find(u => u.cnic === req.params.cnic);\r\n"
+                },
+                {
+                    "date": 1749847922669,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -170,9 +170,9 @@\n \r\n \r\n // Initialize data file and start server\r\n initializeDataFile().then(() => {\r\n-  const PORT = process.env.PORT || 5000;\r\n+  const PORT = process.env.PORT;\r\n   app.listen(PORT, () => {\r\n     console.log(`Server running on port ${PORT}`);\r\n   });\r\n });\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749847930847,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -168,9 +168,8 @@\n   }\r\n });\r\n \r\n \r\n-// Initialize data file and start server\r\n initializeDataFile().then(() => {\r\n   const PORT = process.env.PORT;\r\n   app.listen(PORT, () => {\r\n     console.log(`Server running on port ${PORT}`);\r\n"
+                },
+                {
+                    "date": 1749847937332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -123,9 +123,9 @@\n     const imageResult = await uploadImageToCloudinary(req.file.buffer);\r\n     const newUser = {\r\n       id: Date.now().toString(),\r\n       ...req.body,\r\n-      fatherNic: req.body.fatherCnic || null, // Handle optional field\r\n+      fatherNic: req.body.fatherCnic || null, \r\n       imageUrl: imageResult.secure_url,\r\n       imagePublicId: imageResult.public_id,\r\n       createdAt: new Date().toISOString()\r\n     };\r\n"
+                },
+                {
+                    "date": 1749847952342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -67,9 +67,9 @@\n         if (error) return reject(error);\r\n         resolve(result);\r\n       }\r\n     );\r\n-    \r\n+\r\n     uploadStream.end(buffer);\r\n   });\r\n };\r\n \r\n@@ -98,13 +98,13 @@\n // ********************Create Post API****************\r\n app.post('/api/user/create', upload.single('image'), async (req, res) => {\r\n   try {\r\n     const requiredFields = [\r\n-      'country', 'city', 'course', 'proficiency', \r\n+      'country', 'city', 'course', 'proficiency',\r\n       'fullName', 'fatherName', 'email', 'cnic',\r\n       'phone', 'dob', 'gender', 'qualification', 'hasLaptop'\r\n     ];\r\n-    \r\n+\r\n     for (const field of requiredFields) {\r\n       if (!req.body[field]) {\r\n         return res.status(400).json({\r\n           success: false,\r\n@@ -123,9 +123,9 @@\n     const imageResult = await uploadImageToCloudinary(req.file.buffer);\r\n     const newUser = {\r\n       id: Date.now().toString(),\r\n       ...req.body,\r\n-      fatherNic: req.body.fatherCnic || null, \r\n+      fatherNic: req.body.fatherCnic || null,\r\n       imageUrl: imageResult.secure_url,\r\n       imagePublicId: imageResult.public_id,\r\n       createdAt: new Date().toISOString()\r\n     };\r\n"
+                },
+                {
+                    "date": 1749847983125,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n import express from 'express';\r\n import multer from 'multer';\r\n-import cloudinary from 'cloudinary';\r\n import { v2 as cloudinaryV2 } from 'cloudinary';\r\n import fs from 'fs/promises';\r\n import cors from 'cors';\r\n import dotenv from 'dotenv';\r\n"
+                }
+            ],
+            "date": 1749468824763,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\n\r\nconst index = () => {\r\n  return (\r\n    <div>index</div>\r\n  )\r\n}\r\n\r\nexport default index"
+        }
+    ]
+}

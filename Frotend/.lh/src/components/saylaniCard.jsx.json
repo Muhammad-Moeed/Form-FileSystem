@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/components/saylaniCard.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1749728285479,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749728372939,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,13 +56,4 @@\n };\r\n \r\n export default SMITCard;\r\n \r\n-// Usage example:\r\n-// <SMITCard user={{\r\n-//   fullName: \"Muhammad Moeed\",\r\n-//   fatherName: \"Qamar Uddin\",\r\n-//   cnic: \"4210109534961\",\r\n-//   course: \"Web and Mobile App Development\",\r\n-//   rollNumber: \"WMA-254118\",\r\n-//   image: \"https://res.cloudinary.com/demo/image/upload/sample.jpg\"\r\n-// }} />\r\n"
+                }
+            ],
+            "date": 1749728285479,
+            "name": "Commit-0",
+            "content": "import React, { useRef } from 'react';\r\nimport QRCode from 'qrcode.react';\r\nimport html2canvas from 'html2canvas';\r\nimport jsPDF from 'jspdf';\r\n\r\nconst SMITCard = ({ user }) => {\r\n  const cardRef = useRef(null);\r\n\r\n  const downloadCard = () => {\r\n    if (!cardRef.current) return;\r\n\r\n    html2canvas(cardRef.current).then((canvas) => {\r\n      const imgData = canvas.toDataURL('image/png');\r\n      const pdf = new jsPDF({ orientation: 'landscape' });\r\n      pdf.addImage(imgData, 'PNG', 10, 10);\r\n      pdf.save(`${user.fullName}-smit-card.pdf`);\r\n    });\r\n  };\r\n\r\n  return (\r\n    <div className=\"flex flex-col items-center mt-10\">\r\n      <div ref={cardRef} className=\"flex gap-4 p-4 bg-white rounded shadow-md\">\r\n        {/* Front Side */}\r\n        <div className=\"w-64 h-[350px] border-2 border-blue-600 p-4 text-center\">\r\n          <h3 className=\"text-blue-600 text-xl font-bold\">SMIT</h3>\r\n          <p className=\"text-xs mt-1 mb-2\">SAYLANI MASS IT TRAINING PROGRAM</p>\r\n          <img src={user.image} alt=\"User\" className=\"w-24 h-24 rounded-full object-cover mx-auto border-2 border-blue-600\" />\r\n          <h4 className=\"font-semibold mt-2\">{user.fullName}</h4>\r\n          <p className=\"text-sm\">{user.course}</p>\r\n          <p className=\"font-bold mt-1\">{user.rollNumber || \"WMA-XXXXX\"}</p>\r\n        </div>\r\n\r\n        {/* Back Side */}\r\n        <div className=\"w-64 h-[350px] border-2 border-blue-600 p-4 text-left\">\r\n          <p><strong>Name:</strong> {user.fullName}</p>\r\n          <p><strong>Father name:</strong> {user.fatherName}</p>\r\n          <p><strong>CNIC:</strong> {user.cnic}</p>\r\n          <p><strong>Course:</strong> {user.course}</p>\r\n          <div className=\"flex justify-center my-2\">\r\n            <QRCode value={user.cnic} size={64} />\r\n          </div>\r\n          <p className=\"text-xs mt-2\">Note: This card is for SMIT premises only.</p>\r\n          <p className=\"text-xs\">If found please return to SMIT</p>\r\n          <div className=\"border-t border-black mt-4 pt-2 text-center text-sm\">Issuing authority</div>\r\n        </div>\r\n      </div>\r\n\r\n      <button\r\n        onClick={downloadCard}\r\n        className=\"mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700\"\r\n      >\r\n        Download Card\r\n      </button>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default SMITCard;\r\n\r\n// Usage example:\r\n// <SMITCard user={{\r\n//   fullName: \"Muhammad Moeed\",\r\n//   fatherName: \"Qamar Uddin\",\r\n//   cnic: \"4210109534961\",\r\n//   course: \"Web and Mobile App Development\",\r\n//   rollNumber: \"WMA-254118\",\r\n//   image: \"https://res.cloudinary.com/demo/image/upload/sample.jpg\"\r\n// }} />\r\n"
+        }
+    ]
+}

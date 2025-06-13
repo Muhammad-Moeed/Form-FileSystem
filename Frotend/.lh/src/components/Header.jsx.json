@@ -1,0 +1,766 @@
+{
+    "sourceFile": "src/components/Header.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 187,
+            "patches": [
+                {
+                    "date": 1748950894034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748950906462,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,8 @@\n-impo\n\\ No newline at end of file\n+import React from 'react'\r\n+\r\n+\r\n+  return (\r\n+    \r\n+  )\r\n+}\r\n+export default Header\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1748950912073,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import React from 'react'\r\n \r\n-\r\n+<></>\r\n   return (\r\n-    \r\n+    <></>\r\n   )\r\n-}\r\n+}<></>\r\n export default Header\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1748950921755,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,10 @@\n import React from 'react'\r\n \r\n-<></>\r\n+const Header = () => {\r\n   return (\r\n-    <></>\r\n+    <>\r\n+    </>\r\n   )\r\n-}<></>\r\n+}\r\n+\r\n export default Header\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1748950928085,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n import React from 'react'\r\n+import \r\n \r\n const Header = () => {\r\n   return (\r\n     <>\r\n"
+                },
+                {
+                    "date": 1748950934578,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import React from 'react'\r\n-import \r\n+import Banner from \"../\"\r\n \r\n const Header = () => {\r\n   return (\r\n     <>\r\n"
+                },
+                {
+                    "date": 1748950942293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import React from 'react'\r\n-import Banner from \"../\"\r\n+import Banner from \"../assets/Banner.jpg\"\r\n \r\n const Header = () => {\r\n   return (\r\n     <>\r\n"
+                },
+                {
+                    "date": 1748950948392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n \r\n const Header = () => {\r\n   return (\r\n     <>\r\n+   <img src=\"\" alt=\"\" /> \r\n     </>\r\n   )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1748950955734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \r\n const Header = () => {\r\n   return (\r\n     <>\r\n-   <img src=\"\" alt=\"\" /> \r\n+   <img src={Banner} alt=\"\" /> \r\n     </>\r\n   )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1748951858947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,14 @@\n-import React from 'react'\r\n-import Banner from \"../assets/Banner.jpg\"\r\n+import React from 'react';\r\n+import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <>\r\n-   <img src={Banner} alt=\"\" /> \r\n-    </>\r\n-  )\r\n-}\r\n\\ No newline at end of file\n+    <header className=\"w-full bg-white py-4 shadow\">\r\n+      <div className=\"flex justify-center\">\r\n+        <img src={Banner} alt=\"Banner\" className=\"w-[300px] h-auto\" />\r\n+      </div>\r\n+    </header>\r\n+  );\r\n+};\r\n \r\n-export default Header\n+export default Header;\r\n"
+                },
+                {
+                    "date": 1748951889713,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,11 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full bg-white py-4 shadow\">\r\n+    <header className=\"w-full\">\r\n       <div className=\"flex justify-center\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"w-[300px] h-auto\" />\r\n+        <img src={Banner} alt=\"Banner\" className=\"w-full max-w-screen-lg\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1748951927993,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,11 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full\">\r\n+    <header className=\"w-full py-4 shadow\">\r\n       <div className=\"flex justify-center\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"w-full max-w-screen-lg\" />\r\n+        <img src={Banner} alt=\"Banner\" className=\"w-[500px] h-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1748951970111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,12 @@\n-import React from 'react';\r\n-import Banner from \"../assets/Banner.jpg\";\r\n+import React from 'react'\r\n+import Banner from \"../assets/Banner.jpg\"\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py-4 shadow\">\r\n-      <div className=\"flex justify-center\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"w-[500px] h-auto\" />\r\n-      </div>\r\n-    </header>\r\n-  );\r\n-};\r\n+    <>\r\n+   <img src={Banner} alt=\"\" /> \r\n+    </>\r\n+  )\r\n+}\r\n \r\n-export default Header;\r\n+export default Header\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1748952025328,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,14 @@\n-import React from 'react'\r\n-import Banner from \"../assets/Banner.jpg\"\r\n+import React from 'react';\r\n+import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <>\r\n-   <img src={Banner} alt=\"\" /> \r\n-    </>\r\n-  )\r\n-}\r\n\\ No newline at end of file\n+    <header className=\"w-full py-1 shadow\">\r\n+      <div className=\"flex justify-center\">\r\n+        <img src={Banner} alt=\"Banner\" className=\"w-[500px] h-auto\" />\r\n+      </div>\r\n+    </header>\r\n+  );\r\n+};\r\n \r\n-export default Header\n+export default Header;\r\n"
+                },
+                {
+                    "date": 1748952031386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py-1 shadow\">\r\n+    <header className=\"w-full py- shadow\">\r\n       <div className=\"flex justify-center\">\r\n         <img src={Banner} alt=\"Banner\" className=\"w-[500px] h-auto\" />\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1748952040661,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,11 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py- shadow\">\r\n+    <header className=\"w-full py-4 shadow\">\r\n       <div className=\"flex justify-center\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"w-[500px] h-auto\" />\r\n+        <img src={Banner} alt=\"Banner\" className=\"w-[200px] h-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1748952047074,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const Header = () => {\r\n   return (\r\n     <header className=\"w-full py-4 shadow\">\r\n       <div className=\"flex justify-center\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"w-[200px] h-auto\" />\r\n+        <img src={Banner} alt=\"Banner\" className=\"w-[800px] h-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1748952123359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,13 @@\n const Header = () => {\r\n   return (\r\n     <header className=\"w-full py-4 shadow\">\r\n       <div className=\"flex justify-center\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"w-[800px] h-auto\" />\r\n+        <img\r\n+          src={Banner}\r\n+          alt=\"Banner\"\r\n+          className=\"w-[175px] sm:w-[300px] md:w-[500px] lg:w-[700px] xl:w-[900px] h-auto\"\r\n+        />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1748952135313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,13 +4,9 @@\n const Header = () => {\r\n   return (\r\n     <header className=\"w-full py-4 shadow\">\r\n       <div className=\"flex justify-center\">\r\n-        <img\r\n-          src={Banner}\r\n-          alt=\"Banner\"\r\n-          className=\"w-[175px] sm:w-[300px] md:w-[500px] lg:w-[700px] xl:w-[900px] h-auto\"\r\n-        />\r\n+        <img src={Banner} alt=\"Banner\" className=\"w-[900px] h-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1748952167365,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py-4 shadow\">\r\n+    <header className=\" py-4 shadow\">\r\n       <div className=\"flex justify-center\">\r\n         <img src={Banner} alt=\"Banner\" className=\"w-[900px] h-auto\" />\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1748952179700,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\" py-4 shadow\">\r\n+    <header className=\"w-full  shadow\">\r\n       <div className=\"flex justify-center\">\r\n         <img src={Banner} alt=\"Banner\" className=\"w-[900px] h-auto\" />\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1748952264842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,11 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full  shadow\">\r\n+    <header className=\"w-full py-4 shadow\">\r\n       <div className=\"flex justify-center\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"w-[900px] h-auto\" />\r\n+        <img src={Banner} alt=\"Banner\" className=\"max-w-lg h-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1748952290037,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const Header = () => {\r\n   return (\r\n     <header className=\"w-full py-4 shadow\">\r\n       <div className=\"flex justify-center\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"max-w-lg h-auto\" />\r\n+        <img src={Banner} alt=\"Banner\" className=\"w-[00px] h-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749115892236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,14 @@\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"w-full py-4 shadow\">\r\n-      <div className=\"flex justify-center\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"w-[00px] h-auto\" />\r\n+      <div className=\"grid place-items-center\">\r\n+        <img\r\n+          src={Banner}\r\n+          alt=\"Banner\"\r\n+          className=\"w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl h-auto\"\r\n+        />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749115941405,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n           alt=\"Banner\"\r\n           className=\"w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl h-auto\"\r\n         />\r\n       </div>\r\n-    </header>\r\n+    </header>87\r\n   );\r\n };\r\n \r\n export default Header;\r\n"
+                },
+                {
+                    "date": 1749116131205,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,17 +2,17 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py-4 shadow\">\r\n+    <header className=\" py-4 shadow\">\r\n       <div className=\"grid place-items-center\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n           className=\"w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl h-auto\"\r\n         />\r\n       </div>\r\n-    </header>87\r\n+    </header>\r\n   );\r\n };\r\n \r\n export default Header;\r\n"
+                },
+                {
+                    "date": 1749116143869,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\" py-4 shadow\">\r\n+    <header className=\"w-full py-4 shadow\">\r\n       <div className=\"grid place-items-center\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749116166368,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n       <div className=\"grid place-items-center\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl h-auto\"\r\n+          className=\"w-full max-w-xs sm:max-w-md md:max-w-lg  xl:max-w-5xl h-auto\"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749116172284,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n       <div className=\"grid place-items-center\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full max-w-xs sm:max-w-md md:max-w-lg  xl:max-w-5xl h-auto\"\r\n+          className=\"w-full max-w-xs sm:max-w-md   xl:max-w-5xl h-auto\"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749116185916,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n       <div className=\"grid place-items-center\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full max-w-xs sm:max-w-md   xl:max-w-5xl h-auto\"\r\n+          className=\"w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl h-auto\"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749116199713,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,18 @@\n+import React from 'react';\r\n+import Banner from \"../assets/Banner.jpg\";\r\n+\r\n+const Header = () => {\r\n+  return (\r\n+    <header className=\"w-full py-4 shadow\">\r\n+      <div className=\" place-items-center\">\r\n+        <img\r\n+          src={Banner}\r\n+          alt=\"Banner\"\r\n+          className=\"w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl h-auto\"\r\n+        />\r\n+      </div>\r\n+    </header>\r\n+  );\r\n+};\r\n+\r\n+export default Header;\r\n"
+                },
+                {
+                    "date": 1749116228164,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"w-full py-4 shadow\">\r\n-      <div className=\" place-items-center\">\r\n+      <div className=\"grd place-items-center\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n           className=\"w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl h-auto\"\r\n@@ -15,22 +15,4 @@\n   );\r\n };\r\n \r\n export default Header;\r\n-import React from 'react';\r\n-import Banner from \"../assets/Banner.jpg\";\r\n-\r\n-const Header = () => {\r\n-  return (\r\n-    <header className=\"w-full py-4 shadow\">\r\n-      <div className=\"grid place-items-center\">\r\n-        <img\r\n-          src={Banner}\r\n-          alt=\"Banner\"\r\n-          className=\"w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl h-auto\"\r\n-        />\r\n-      </div>\r\n-    </header>\r\n-  );\r\n-};\r\n-\r\n-export default Header;\r\n"
+                },
+                {
+                    "date": 1749116233609,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"w-full py-4 shadow\">\r\n-      <div className=\"grd place-items-center\">\r\n+      <div className=\"g place-items-center\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n           className=\"w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl h-auto\"\r\n"
+                },
+                {
+                    "date": 1749116243491,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,10 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py-4 shadow\">\r\n-      <div className=\"g place-items-center\">\r\n+    <header className=\"w-full shadow\">\r\n+      <div className=\"grid place-items-center\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n           className=\"w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl h-auto\"\r\n"
+                },
+                {
+                    "date": 1749116253232,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,15 +2,11 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full shadow\">\r\n-      <div className=\"grid place-items-center\">\r\n-        <img\r\n-          src={Banner}\r\n-          alt=\"Banner\"\r\n-          className=\"w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl h-auto\"\r\n-        />\r\n+    <header className=\"w-full py-4 shadow\">\r\n+      <div className=\"flex justify-center\">\r\n+        <img src={Banner} alt=\"Banner\" className=\"w-[800px] h-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749116466378,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py-4 shadow\">\r\n+    <header className=\"grid grid-flow-col grid-rows-3 gap-4 \">\r\n       <div className=\"flex justify-center\">\r\n         <img src={Banner} alt=\"Banner\" className=\"w-[800px] h-auto\" />\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1749116589179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"grid grid-flow-col grid-rows-3 gap-4 \">\r\n+    <header className=\"grid grid-cols-6 gap-4 \">\r\n       <div className=\"flex justify-center\">\r\n         <img src={Banner} alt=\"Banner\" className=\"w-[800px] h-auto\" />\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1749116598532,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"grid grid-cols-6 gap-4 \">\r\n-      <div className=\"flex justify-center\">\r\n+      <div className=\"\">\r\n         <img src={Banner} alt=\"Banner\" className=\"w-[800px] h-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749116607071,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const Header = () => {\r\n   return (\r\n     <header className=\"grid grid-cols-6 gap-4 \">\r\n       <div className=\"\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"w-[800px] h-auto\" />\r\n+        <img src={Banner} alt=\"Banner\" className=\"\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749116627890,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const Header = () => {\r\n   return (\r\n     <header className=\"grid grid-cols-6 gap-4 \">\r\n       <div className=\"\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"\" />\r\n+        <img src={Banner} alt=\"Banner\" className=\"col-start-1 col-end-7\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749116634152,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const Header = () => {\r\n   return (\r\n     <header className=\"grid grid-cols-6 gap-4 \">\r\n       <div className=\"\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"col-start-1 col-end-7\" />\r\n+        <img src={Banner} alt=\"Banner\" className=\"\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749116639747,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"grid grid-cols-6 gap-4 \">\r\n+    <header className=\"grid grid-cols-12 gap-4 \">\r\n       <div className=\"\">\r\n         <img src={Banner} alt=\"Banner\" className=\"\" />\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1749116675692,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,15 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"grid grid-cols-12 gap-4 \">\r\n-      <div className=\"\">\r\n-        <img src={Banner} alt=\"Banner\" className=\"\" />\r\n+    <header className=\"grid grid-cols-12 gap-4 w-full py-4 shadow\">\r\n+      <div className=\"col-span-12 sm:col-span-10 sm:col-start-2 flex justify-center\">\r\n+        <img\r\n+          src={Banner}\r\n+          alt=\"Banner\"\r\n+          className=\"w-full max-w-full sm:max-w-3xl h-auto rounded-lg shadow\"\r\n+        />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749116780311,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,14 +2,14 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"grid grid-cols-12 gap-4 w-full py-4 shadow\">\r\n-      <div className=\"col-span-12 sm:col-span-10 sm:col-start-2 flex justify-center\">\r\n+    <header className=\"w-full py-4 shadow bg-white\">\r\n+      <div className=\"container mx-auto px-4\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full max-w-full sm:max-w-3xl h-auto rounded-lg shadow\"\r\n+          className=\"w-full h-auto rounded-lg shadow\"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749116901058,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,14 +2,14 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py-4 shadow bg-white\">\r\n-      <div className=\"container mx-auto px-4\">\r\n+    <header className=\"w-full py-4 bg-white shadow\">\r\n+      <div className=\"w-full px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full h-auto rounded-lg shadow\"\r\n+          className=\"w-full h-auto rounded-md shadow-md\"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749117095601,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,13 +3,13 @@\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"w-full py-4 bg-white shadow\">\r\n-      <div className=\"w-full px-4 sm:px-6 lg:px-8\">\r\n+      <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full h-auto rounded-md shadow-md\"\r\n+          className=\"w-full h-auto\"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749117185262,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py-4 bg-white shadow\">\r\n+    <header className=\"w-full py bg-white shadow\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117193178,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py bg-white shadow\">\r\n+    <header className=\"w-full py- bg-white shadow\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117202574,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py- bg-white shadow\">\r\n+    <header className=\"w-full py-[] bg-white shadow\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117209715,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py-[] bg-white shadow\">\r\n+    <header className=\"w-full py-[100px] bg-white shadow\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117216786,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py-[100px] bg-white shadow\">\r\n+    <header className=\"w-full px-[100px] bg-white shadow\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117224559,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full px-[100px] bg-white shadow\">\r\n+    <header className=\"w-full py bg-white shadow\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117229981,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full py bg-white shadow\">\r\n+    <header className=\"w-full px-4 bg-white shadow\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117236901,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full px-4 bg-white shadow\">\r\n+    <header className=\"w-full px-10 bg-white shadow\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117244642,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full px-10 bg-white shadow\">\r\n+    <header className=\"w-full px-8 bg-white shadow\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117252077,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full px-8 bg-white shadow\">\r\n+    <header className=\"w-full px-[20px] bg-white shadow\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117257627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full px-[20px] bg-white shadow\">\r\n+    <header className=\"w-full px-[50px] bg-white shadow\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117279722,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full px-[50px] bg-white shadow\">\r\n+    <header className=\"w-full px-[50px]\">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117286069,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full h-auto\"\r\n+          className=\"w-full \"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749117307601,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full \"\r\n+          className=\"w-full mx-4\"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749117314831,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full mx-4\"\r\n+          className=\"w-full mx-[20px  \"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749117324056,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full mx-[20px  \"\r\n+          className=\"w-full \"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749117334739,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"w-full px-[50px]\">\r\n-      <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n+      <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n           className=\"w-full \"\r\n"
+                },
+                {
+                    "date": 1749117379836,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,14 +2,14 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full px-[50px]\">\r\n-      <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-\">\r\n+    <header className=\"w-full bg-white shadow\">\r\n+      <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full \"\r\n+          className=\"w-full h-auto\"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749117461117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n-          className=\"w-full h-auto\"\r\n+          className=\"w-full h-auto rounded\"\r\n         />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749117570610,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full bg-white shadow\">\r\n+    <header className=\"w-full bg-white shadow \">\r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749117594316,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,17 +2,17 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"w-full bg-white shadow \">\r\n+  \r\n       <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n         <img\r\n           src={Banner}\r\n           alt=\"Banner\"\r\n           className=\"w-full h-auto rounded\"\r\n         />\r\n       </div>\r\n-    </header>\r\n+   \r\n   );\r\n };\r\n \r\n export default Header;\r\n"
+                },
+                {
+                    "date": 1749117709730,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,17 +2,19 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-  \r\n-      <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n-        <img\r\n-          src={Banner}\r\n-          alt=\"Banner\"\r\n-          className=\"w-full h-auto rounded\"\r\n-        />\r\n+    <header className=\"bg-white shadow-sm\">\r\n+      <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4\">\r\n+        <div className=\"flex justify-center items-center\">\r\n+          <img\r\n+            src={Banner}\r\n+            alt=\"Banner\"\r\n+            className=\"h-24 object-contain\" // Adjust height as needed\r\n+          />\r\n+        </div>\r\n       </div>\r\n-   \r\n+    </header>\r\n   );\r\n };\r\n \r\n-export default Header;\r\n+export default Header;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749117881608,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,15 +2,15 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"bg-white shadow-sm\">\r\n-      <div className=\"max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4\">\r\n-        <div className=\"flex justify-center items-center\">\r\n+    <header className=\"bg-white w-full\">\r\n+      <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n+        <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n-            className=\"h-24 object-contain\" // Adjust height as needed\r\n+            className=\"h-auto w-full max-w-[800px] object-contain\" // Adjust max-w as needed\r\n           />\r\n         </div>\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1749117998452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,16 +3,14 @@\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n-      <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n-        <div className=\"flex justify-center items-center w-full\">\r\n-          <img\r\n-            src={Banner}\r\n-            alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[800px] object-contain\" // Adjust max-w as needed\r\n-          />\r\n-        </div>\r\n+      <div className=\"w-full mx-auto px-0\"> {/* No padding */}\r\n+        <img\r\n+          src={Banner}\r\n+          alt=\"Banner\"\r\n+          className=\"w-full h-auto\" // Pure edge-to-edge\r\n+        />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749118005356,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,14 +3,16 @@\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n-      <div className=\"w-full mx-auto px-0\"> {/* No padding */}\r\n-        <img\r\n-          src={Banner}\r\n-          alt=\"Banner\"\r\n-          className=\"w-full h-auto\" // Pure edge-to-edge\r\n-        />\r\n+      <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n+        <div className=\"flex justify-center items-center w-full\">\r\n+          <img\r\n+            src={Banner}\r\n+            alt=\"Banner\"\r\n+            className=\"h-auto w-full max-w-[800px] object-contain\" // Adjust max-w as needed\r\n+          />\r\n+        </div>\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749118138585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[800px] object-contain\" // Adjust max-w as needed\r\n+            className=\"h-auto w-full max-w-[800px] object-contain\" \r\n           />\r\n         </div>\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1749118149564,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[800px] object-contain\" \r\n+            className=\"h-auto w-full max-w-[00px] object-contain\" \r\n           />\r\n         </div>\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1749118164080,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[00px] object-contain\" \r\n+            className=\"h-auto w-full max-w-[0px] object-contain\" \r\n           />\r\n         </div>\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1749118173448,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[0px] object-contain\" \r\n+            className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1749118214118,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"bg-white w-full\">\r\n+    <header className=\"bg-white\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n"
+                },
+                {
+                    "date": 1749118226449,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n \r\n const Header = () => {\r\n   return (\r\n-    <header className=\"bg-white\">\r\n+    <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n"
+                },
+                {
+                    "date": 1749118574316,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,17 +4,31 @@\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n+        {/* Banner Image */}\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n+            className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n+\r\n+        {/* Buttons */}\r\n+        <div className=\"flex justify-center items-center mt-6 gap-4 flex-wrap\">\r\n+          <button className=\"bg-white text-blue-600 border border-blue-600 font-semibold py-2 px-4 rounded hover:text-green-600 transition\">\r\n\\ No newline at end of file\n+            Registration\r\n+          </button>\r\n+          <button className=\"bg-white text-blue-600 border border-blue-600 font-semibold py-2 px-4 rounded hover:text-green-600 transition\">\r\n+            Download ID Card\r\n+          </button>\r\n+          <button className=\"bg-white text-blue-600 border border-blue-600 font-semibold py-2 px-4 rounded hover:text-green-600 transition\">\r\n+            Result\r\n+          </button>\r\n+        </div>\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n \r\n-export default Header;\n+export default Header;\r\n"
+                },
+                {
+                    "date": 1749118590244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,29 +4,15 @@\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n-        {/* Banner Image */}\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n+            className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n-\r\n-        {/* Buttons */}\r\n-        <div className=\"flex justify-center items-center mt-6 gap-4 flex-wrap\">\r\n-          <button className=\"bg-white text-blue-600 border border-blue-600 font-semibold py-2 px-4 rounded hover:text-green-600 transition\">\r\n-            Registration\r\n-          </button>\r\n-          <button className=\"bg-white text-blue-600 border border-blue-600 font-semibold py-2 px-4 rounded hover:text-green-600 transition\">\r\n-            Download ID Card\r\n-          </button>\r\n-          <button className=\"bg-white text-blue-600 border border-blue-600 font-semibold py-2 px-4 rounded hover:text-green-600 transition\">\r\n-            Result\r\n-          </button>\r\n-        </div>\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749118622817,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,30 @@\n+// components/Header.jsx\r\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n+import CustomButton from './CustomButton'; // import your custom button\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n+        {/* Banner Image */}\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n+            className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n+\r\n+        {/* Buttons */}\r\n\\ No newline at end of file\n+        <div className=\"flex justify-center items-center mt-6 flex-wrap gap-3\">\r\n+          <CustomButton text=\"Registration\" />\r\n+          <CustomButton text=\"Download ID Card\" />\r\n+          <CustomButton text=\"Result\" />\r\n+        </div>\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n \r\n-export default Header;\n+export default Header;\r\n"
+                },
+                {
+                    "date": 1749118633301,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n // components/Header.jsx\r\n import React from 'react';\r\n-import Banner from \"../assets/Banner.jpg\";\r\n-import CustomButton from './CustomButton'; // import your custom button\r\n+import Banner from \"../assets/Banner.jpg\"'\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n@@ -26,5 +25,5 @@\n     </header>\r\n   );\r\n };\r\n \r\n-export default Header;\n\\ No newline at end of file\n+export default Header;\r\n"
+                },
+                {
+                    "date": 1749118639794,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n // components/Header.jsx\r\n import React from 'react';\r\n-import Banner from \"../assets/Banner.jpg\"'\r\n+import Banner from \"../assets/Banner.jpg\";\r\n+import \r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n"
+                },
+                {
+                    "date": 1749118667215,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n // components/Header.jsx\r\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n-import \r\n+import Custom\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n"
+                },
+                {
+                    "date": 1749118813245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,29 +1,49 @@\n-// components/Header.jsx\r\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n-import Custom\r\n+import CustomButton from './CustomButton';\r\n+import { FaFacebookF, FaInstagram, FaYoutube, FaGraduationCap } from 'react-icons/fa';\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n-      <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n-        {/* Banner Image */}\r\n-        <div className=\"flex justify-center items-center w-full\">\r\n-          <img\r\n-            src={Banner}\r\n-            alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n-          />\r\n+      {/* Banner Image */}\r\n+      <div className=\"w-full flex justify-center items-center\">\r\n+        <img\r\n+          src={Banner}\r\n+          alt=\"Banner\"\r\n+          className=\"w-full max-w-[1000px] object-contain\"\r\n+        />\r\n+      </div>\r\n+\r\n+      {/* Top Bar: Icons, Heading, Portal Button */}\r\n+      <div className=\"flex justify-between items-center max-w-[1000px] mx-auto mt-4 px-4\">\r\n+        {/* Social Icons */}\r\n+        <div className=\"flex gap-3 text-blue-600 text-lg\">\r\n+          <FaFacebookF className=\"cursor-pointer\" />\r\n+          <FaInstagram className=\"cursor-pointer\" />\r\n+          <FaYoutube className=\"cursor-pointer\" />\r\n         </div>\r\n \r\n-        {/* Buttons */}\r\n-        <div className=\"flex justify-center items-center mt-6 flex-wrap gap-3\">\r\n-          <CustomButton text=\"Registration\" />\r\n-          <CustomButton text=\"Download ID Card\" />\r\n-          <CustomButton text=\"Result\" />\r\n+        {/* Heading */}\r\n+        <div className=\"text-center text-xl font-bold text-gray-700\">\r\n+          Registration Form - <span className=\"text-blue-700\">SMIT</span>\r\n+          <div className=\"text-sm text-gray-500\">Services - Education - Registration</div>\r\n         </div>\r\n+\r\n+        {/* Student Portal Button */}\r\n+        <button className=\"border border-blue-500 text-blue-700 px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1 hover:bg-blue-50\">\r\n+          <FaGraduationCap />\r\n+          Student portal\r\n+        </button>\r\n       </div>\r\n+\r\n+      {/* Bottom Buttons */}\r\n+      <div className=\"flex justify-center gap-3 mt-4 mb-6 flex-wrap\">\r\n+        <CustomButton text=\"Registration\" active />\r\n+        <CustomButton text=\"Download ID Card\" />\r\n+        <CustomButton text=\"Results\" />\r\n+      </div>\r\n     </header>\r\n   );\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1749118830725,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n-import CustomButton from './CustomButton';\r\n+import CustomButton from \r\n import { FaFacebookF, FaInstagram, FaYoutube, FaGraduationCap } from 'react-icons/fa';\r\n \r\n const Header = () => {\r\n   return (\r\n"
+                },
+                {
+                    "date": 1749118836040,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n-import CustomButton from \r\n+import CustomButton from '../components'\r\n import { FaFacebookF, FaInstagram, FaYoutube, FaGraduationCap } from 'react-icons/fa';\r\n \r\n const Header = () => {\r\n   return (\r\n"
+                },
+                {
+                    "date": 1749118880822,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n-import CustomButton from '../components'\r\n+import CustomButton from '../components/'\r\n import { FaFacebookF, FaInstagram, FaYoutube, FaGraduationCap } from 'react-icons/fa';\r\n \r\n const Header = () => {\r\n   return (\r\n"
+                },
+                {
+                    "date": 1749118930071,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,50 +1,20 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n-import CustomButton from '../components/'\r\n-import { FaFacebookF, FaInstagram, FaYoutube, FaGraduationCap } from 'react-icons/fa';\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n-      {/* Banner Image */}\r\n-      <div className=\"w-full flex justify-center items-center\">\r\n-        <img\r\n-          src={Banner}\r\n-          alt=\"Banner\"\r\n-          className=\"w-full max-w-[1000px] object-contain\"\r\n-        />\r\n-      </div>\r\n-\r\n-      {/* Top Bar: Icons, Heading, Portal Button */}\r\n-      <div className=\"flex justify-between items-center max-w-[1000px] mx-auto mt-4 px-4\">\r\n-        {/* Social Icons */}\r\n-        <div className=\"flex gap-3 text-blue-600 text-lg\">\r\n-          <FaFacebookF className=\"cursor-pointer\" />\r\n-          <FaInstagram className=\"cursor-pointer\" />\r\n-          <FaYoutube className=\"cursor-pointer\" />\r\n+      <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n+        <div className=\"flex justify-center items-center w-full\">\r\n+          <img\r\n+            src={Banner}\r\n+            alt=\"Banner\"\r\n+            className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n+          />\r\n         </div>\r\n-\r\n-        {/* Heading */}\r\n-        <div className=\"text-center text-xl font-bold text-gray-700\">\r\n-          Registration Form - <span className=\"text-blue-700\">SMIT</span>\r\n-          <div className=\"text-sm text-gray-500\">Services - Education - Registration</div>\r\n-        </div>\r\n-\r\n-        {/* Student Portal Button */}\r\n-        <button className=\"border border-blue-500 text-blue-700 px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1 hover:bg-blue-50\">\r\n-          <FaGraduationCap />\r\n-          Student portal\r\n-        </button>\r\n       </div>\r\n-\r\n-      {/* Bottom Buttons */}\r\n-      <div className=\"flex justify-center gap-3 mt-4 mb-6 flex-wrap\">\r\n-        <CustomButton text=\"Registration\" active />\r\n-        <CustomButton text=\"Download ID Card\" />\r\n-        <CustomButton text=\"Results\" />\r\n-      </div>\r\n     </header>\r\n   );\r\n };\r\n \r\n-export default Header;\r\n+export default Header;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749118941233,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n+        \r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749118946559,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n+import\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n@@ -11,9 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n-        \r\n+\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749119000513,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n-import\r\n+import Cus\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n"
+                },
+                {
+                    "date": 1749119007130,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n-import Cus\r\n+import CustomButton from './Button';\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n@@ -12,8 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n+        Cus\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119012968,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n-        Cus\r\n+        CustomBu\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119018531,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n-        CustomBu\r\n+        <CustomButton></CustomButton>\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119027738,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n-        <CustomButton></CustomButton>\r\n+        CustomButton/>\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119033892,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n-        CustomButton/>\r\n+        <CustomButton />\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119040674,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n-        <CustomButton />\r\n+        <CustomButton text={} />\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119046342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n-        <CustomButton text={} />\r\n+        <CustomButton text={'ali'} />\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119071040,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n-        <CustomButton text={'ali'} />\r\n+        <CustomButton text={'Registration'} />\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119088999,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,10 @@\n             className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n           />\r\n         </div>\r\n         <CustomButton text={'Registration'} />\r\n+        <CustomButton text={'Download ID Card'} />\r\n+        <CustomButton text={'Registration'} />\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119096150,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           />\r\n         </div>\r\n         <CustomButton text={'Registration'} />\r\n         <CustomButton text={'Download ID Card'} />\r\n-        <CustomButton text={'Registration'} />\r\n+        <CustomButton text={'Result'} />\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119134789,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,14 +9,14 @@\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[1000px] object-contain\" \r\n+            className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n         <CustomButton text={'Registration'} />\r\n         <CustomButton text={'Download ID Card'} />\r\n-        <CustomButton text={'Result'} />\r\n+        <CustomButton text={'Results'} />\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119142465,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,11 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n-        <CustomButton text={'Registration'} />\r\n-        <CustomButton text={'Download ID Card'} />\r\n-        <CustomButton text={'Results'} />\r\n+      \r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119149706,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,9 @@\n             src={Banner}\r\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n+          \r\n         </div>\r\n       \r\n \r\n       </div>\r\n"
+                },
+                {
+                    "date": 1749119164910,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,11 +11,12 @@\n             src={Banner}\r\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n-          \r\n         </div>\r\n-      \r\n+        <CustomButton text={'Registration'} />\r\n+        <CustomButton text={'Download ID Card'} />\r\n+        <CustomButton text={'Results'} />\r\n \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119202528,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n-        <CustomButton text={'Registration'} />\r\n+        <CustomButton text={'Registration'} active/>\r\n         <CustomButton text={'Download ID Card'} />\r\n         <CustomButton text={'Results'} />\r\n \r\n       </div>\r\n"
+                },
+                {
+                    "date": 1749119222276,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n-        <CustomButton text={'Registration'} active/>\r\n+        <CustomButton text={'Registration'} active  />\r\n         <CustomButton text={'Download ID Card'} />\r\n         <CustomButton text={'Results'} />\r\n \r\n       </div>\r\n"
+                },
+                {
+                    "date": 1749119283027,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,21 +5,25 @@\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n+        {/* Banner */}\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n-        <CustomButton text={'Registration'} active  />\r\n-        <CustomButton text={'Download ID Card'} />\r\n-        <CustomButton text={'Results'} />\r\n \r\n+        {/* Buttons Centered with Gap */}\r\n+        <div className=\"flex justify-center gap-4 mt-4\">\r\n+          <CustomButton text=\"Registration\" active />\r\n+          <CustomButton text=\"Download ID Card\" />\r\n+          <CustomButton text=\"Results\" />\r\n\\ No newline at end of file\n+        </div>\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n \r\n-export default Header;\n+export default Header;\r\n"
+                },
+                {
+                    "date": 1749119318331,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n           />\r\n         </div>\r\n \r\n         {/* Buttons Centered with Gap */}\r\n-        <div className=\"flex justify-center gap-4 mt-4\">\r\n+        <div className=\"flex justify-center gap-2 mt-4\">\r\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n@@ -25,5 +25,5 @@\n     </header>\r\n   );\r\n };\r\n \r\n-export default Header;\n\\ No newline at end of file\n+export default Header;\r\n"
+                },
+                {
+                    "date": 1749119324679,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n           />\r\n         </div>\r\n \r\n         {/* Buttons Centered with Gap */}\r\n-        <div className=\"flex justify-center gap-2 mt-4\">\r\n+        <div className=\"flex justify-center gap-1 mt-4\">\r\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n"
+                },
+                {
+                    "date": 1749119341566,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n           />\r\n         </div>\r\n \r\n         {/* Buttons Centered with Gap */}\r\n-        <div className=\"flex justify-center gap-1 mt-4\">\r\n+        <div className=\"flex justify-center gap-1 mt-\">\r\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n"
+                },
+                {
+                    "date": 1749119353438,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n           />\r\n         </div>\r\n \r\n         {/* Buttons Centered with Gap */}\r\n-        <div className=\"flex justify-center gap-1 mt-\">\r\n+        <div className=\"flex justify-center gap-1 mt-1\">\r\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n"
+                },
+                {
+                    "date": 1749119958915,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,9 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n+         <hr className=\"border-t border-gray-300 my-4 w-full max-w-[1000px] mx-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749119971946,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n-         <hr className=\"border-t border-gray-300 my-4 w-full max-w-[1000px] mx-auto\" />\r\n+         \r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749119980216,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,9 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n+        <hr className=\"border-t border-gray-300 my-4 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119995911,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n-        <hr className=\"border-t border-gray-300 my-4 w-full max-w-[1000px] mx-auto\" />\r\n+        <hr className=\"border-t border-gray-300  w-full max-w-[1000px] mx-auto\" />\r\n          \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749120031257,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n-        <hr className=\"border-t border-gray-300  w-full max-w-[1000px] mx-auto\" />\r\n+        <hr className=\"border-t mt-border-gray-300 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749120037746,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n-        <hr className=\"border-t mt-border-gray-300 w-full max-w-[1000px] mx-auto\" />\r\n+        <hr className=\"border-t mt-2 border-gray-300 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749120058005,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n-        <hr className=\"border-t mt-2 border-gray-300 w-full max-w-[1000px] mx-auto\" />\r\n+        <hr className=\"border-t mt-1 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749120088550,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n-        <hr className=\"border-t mt-1 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n+        <hr className=\"border-t mt-0 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749120248661,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n-        <hr className=\"border-t mt-0 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n+        <hr className=\"border-t mt-2 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749120258200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n-        <hr className=\"border-t mt-2 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n+        <hr className=\"border-t mt- border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749120338349,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,10 +20,11 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n-        <hr className=\"border-t mt- border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n-         \r\n+\r\n+        {/* Horizontal line just below buttons with some margin */}\r\n+        <hr className=\"border-t mt-2 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749120375439,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,11 +20,10 @@\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n-\r\n-        {/* Horizontal line just below buttons with some margin */}\r\n-        <hr className=\"border-t mt-2 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n+        <hr className=\"border-t mt-0 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n+         \r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749120414442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,16 +14,18 @@\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n \r\n-        {/* Buttons Centered with Gap */}\r\n-        <div className=\"flex justify-center gap-1 mt-1\">\r\n-          <CustomButton text=\"Registration\" active />\r\n-          <CustomButton text=\"Download ID Card\" />\r\n-          <CustomButton text=\"Results\" />\r\n+        {/* Buttons with centered small hr line below */}\r\n+        <div className=\"flex flex-col items-center gap-1 mt-1\">\r\n+          <div className=\"flex justify-center gap-1\">\r\n+            <CustomButton text=\"Registration\" active />\r\n+            <CustomButton text=\"Download ID Card\" />\r\n+            <CustomButton text=\"Results\" />\r\n+          </div>\r\n+          {/* Small centered hr line */}\r\n+          <hr className=\"border-t border-gray-200 w-32 mt-2\" />\r\n         </div>\r\n-        <hr className=\"border-t mt-0 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n-         \r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749120420292,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,18 +14,16 @@\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n \r\n-        {/* Buttons with centered small hr line below */}\r\n-        <div className=\"flex flex-col items-center gap-1 mt-1\">\r\n-          <div className=\"flex justify-center gap-1\">\r\n-            <CustomButton text=\"Registration\" active />\r\n-            <CustomButton text=\"Download ID Card\" />\r\n-            <CustomButton text=\"Results\" />\r\n-          </div>\r\n-          {/* Small centered hr line */}\r\n-          <hr className=\"border-t border-gray-200 w-32 mt-2\" />\r\n+        {/* Buttons Centered with Gap */}\r\n+        <div className=\"flex justify-center gap-1 mt-1\">\r\n+          <CustomButton text=\"Registration\" active />\r\n+          <CustomButton text=\"Download ID Card\" />\r\n+          <CustomButton text=\"Results\" />\r\n         </div>\r\n+        <hr className=\"border-t mt-0 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n+         \r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749120475028,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,8 @@\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n \r\n-        {/* Buttons Centered with Gap */}\r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n"
+                },
+                {
+                    "date": 1749120495789,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,13 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import CustomButton from './Button';\r\n+import Link\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n-        {/* Banner */}\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749120507755,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import CustomButton from './Button';\r\n-import Link\r\n+import { Link } from 'react-router-dom';\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n@@ -15,8 +15,9 @@\n           />\r\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n+          \r\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n"
+                },
+                {
+                    "date": 1749120513514,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n           />\r\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n-          \r\n+          <Link></Link>\r\n           <CustomButton text=\"Registration\" active />\r\n           <CustomButton text=\"Download ID Card\" />\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n"
+                },
+                {
+                    "date": 1749120520489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,11 +15,13 @@\n           />\r\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n-          <Link></Link>\r\n+          <Link>\r\n           <CustomButton text=\"Registration\" active />\r\n+          </Link>\r\n           <CustomButton text=\"Download ID Card\" />\r\n+          \r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n         <hr className=\"border-t mt-0 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n"
+                },
+                {
+                    "date": 1749120526192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,10 +18,11 @@\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n           <Link>\r\n           <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n+          <Link>\r\n           <CustomButton text=\"Download ID Card\" />\r\n-          \r\n+\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n         <hr className=\"border-t mt-0 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n"
+                },
+                {
+                    "date": 1749120533438,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,10 @@\n           <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n           <Link>\r\n           <CustomButton text=\"Download ID Card\" />\r\n-\r\n+          </Link>\r\n+          <LInk></LInk>\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n         <hr className=\"border-t mt-0 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n"
+                },
+                {
+                    "date": 1749120539407,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n           </Link>\r\n           <Link>\r\n           <CustomButton text=\"Download ID Card\" />\r\n           </Link>\r\n-          <LInk></LInk>\r\n+          <Link>\r\n           <CustomButton text=\"Results\" />\r\n         </div>\r\n         <hr className=\"border-t mt-0 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n"
+                },
+                {
+                    "date": 1749120544904,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,16 +15,17 @@\n           />\r\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n-          <Link>\r\n+          <Link  >\r\n           <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n           <Link>\r\n           <CustomButton text=\"Download ID Card\" />\r\n           </Link>\r\n           <Link>\r\n           <CustomButton text=\"Results\" />\r\n+          </Link>\r\n         </div>\r\n         <hr className=\"border-t mt-0 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n          \r\n       </div>\r\n"
+                },
+                {
+                    "date": 1749120553782,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import CustomButton from './Button';\r\n import { Link } from 'react-router-dom';\r\n+import \r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n@@ -15,9 +16,9 @@\n           />\r\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n-          <Link  >\r\n+          <Link to={}>\r\n           <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n           <Link>\r\n           <CustomButton text=\"Download ID Card\" />\r\n"
+                },
+                {
+                    "date": 1749120568386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import CustomButton from './Button';\r\n import { Link } from 'react-router-dom';\r\n-import \r\n+import Don\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n"
+                },
+                {
+                    "date": 1749120575621,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import CustomButton from './Button';\r\n import { Link } from 'react-router-dom';\r\n-import Don\r\n+import Download from '../pages/download';\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n@@ -16,9 +16,9 @@\n           />\r\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n-          <Link to={}>\r\n+          <Link to={D}>\r\n           <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n           <Link>\r\n           <CustomButton text=\"Download ID Card\" />\r\n"
+                },
+                {
+                    "date": 1749120594217,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n           />\r\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n-          <Link to={D}>\r\n+          <Link to={}>\r\n           <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n           <Link>\r\n           <CustomButton text=\"Download ID Card\" />\r\n"
+                },
+                {
+                    "date": 1749120604241,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,12 +16,12 @@\n           />\r\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n-          <Link to={}>\r\n+          <Link >\r\n           <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n-          <Link>\r\n+          <Link typeof operand === 'undefined'>\r\n           <CustomButton text=\"Download ID Card\" />\r\n           </Link>\r\n           <Link>\r\n           <CustomButton text=\"Results\" />\r\n"
+                },
+                {
+                    "date": 1749120616285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n           <Link >\r\n           <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n-          <Link typeof operand === 'undefined'>\r\n+          <Link to={download}>\r\n           <CustomButton text=\"Download ID Card\" />\r\n           </Link>\r\n           <Link>\r\n           <CustomButton text=\"Results\" />\r\n"
+                },
+                {
+                    "date": 1749120622420,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n           <Link >\r\n           <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n-          <Link to={download}>\r\n+          <Link to=>\r\n           <CustomButton text=\"Download ID Card\" />\r\n           </Link>\r\n           <Link>\r\n           <CustomButton text=\"Results\" />\r\n"
+                },
+                {
+                    "date": 1749120627919,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n           <Link >\r\n           <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n-          <Link to=>\r\n+          <Link to={Download}>\r\n           <CustomButton text=\"Download ID Card\" />\r\n           </Link>\r\n           <Link>\r\n           <CustomButton text=\"Results\" />\r\n"
+                },
+                {
+                    "date": 1749120658158,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import CustomButton from './Button';\r\n import { Link } from 'react-router-dom';\r\n-import Download from '../pages/download';\r\n \r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n@@ -16,20 +15,19 @@\n           />\r\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n-          <Link >\r\n-          <CustomButton text=\"Registration\" active />\r\n+          <Link to=\"/registration\">\r\n+            <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n-          <Link to={Download}>\r\n-          <CustomButton text=\"Download ID Card\" />\r\n+          <Link to=\"/download\">\r\n+            <CustomButton text=\"Download ID Card\" />\r\n           </Link>\r\n-          <Link>\r\n-          <CustomButton text=\"Results\" />\r\n+          <Link to=\"/results\">\r\n+            <CustomButton text=\"Results\" />\r\n           </Link>\r\n         </div>\r\n-        <hr className=\"border-t mt-0 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n-         \r\n+        <hr className=\"border-t mt-2 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749120669951,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n           <Link to=\"/registration\">\r\n-            <CustomButton text=\"Registration\" active />\r\n+            <CustomButton text=\"/\" active />\r\n           </Link>\r\n           <Link to=\"/download\">\r\n             <CustomButton text=\"Download ID Card\" />\r\n           </Link>\r\n"
+                },
+                {
+                    "date": 1749120676350,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n           <Link to=\"/registration\">\r\n-            <CustomButton text=\"/\" active />\r\n+            <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n           <Link to=\"/download\">\r\n             <CustomButton text=\"Download ID Card\" />\r\n           </Link>\r\n"
+                },
+                {
+                    "date": 1749120720408,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,15 +15,15 @@\n           />\r\n         </div>\r\n \r\n         <div className=\"flex justify-center gap-1 mt-1\">\r\n-          <Link to=\"/registration\">\r\n+          <Link to=\"/\">\r\n             <CustomButton text=\"Registration\" active />\r\n           </Link>\r\n           <Link to=\"/download\">\r\n             <CustomButton text=\"Download ID Card\" />\r\n           </Link>\r\n-          <Link to=\"/results\">\r\n+          <Link \">\r\n             <CustomButton text=\"Results\" />\r\n           </Link>\r\n         </div>\r\n         <hr className=\"border-t mt-2 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n"
+                },
+                {
+                    "date": 1749120730098,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n           </Link>\r\n           <Link to=\"/download\">\r\n             <CustomButton text=\"Download ID Card\" />\r\n           </Link>\r\n-          <Link \">\r\n+          \r\n             <CustomButton text=\"Results\" />\r\n           </Link>\r\n         </div>\r\n         <hr className=\"border-t mt-2 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n"
+                },
+                {
+                    "date": 1749150689285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,32 +1,44 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import CustomButton from './Button';\r\n-import { Link } from 'react-router-dom';\r\n+import { Link, useLocation } from 'react-router-dom';\r\n+import Nav from 'react-bootstrap/Nav';\r\n \r\n const Header = () => {\r\n+  const location = useLocation();\r\n+\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n+        {/* Banner Image */}\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n \r\n-        <div className=\"flex justify-center gap-1 mt-1\">\r\n-          <Link to=\"/\">\r\n-            <CustomButton text=\"Registration\" active />\r\n-          </Link>\r\n-          <Link to=\"/download\">\r\n-            <CustomButton text=\"Download ID Card\" />\r\n-          </Link>\r\n-          \r\n-            <CustomButton text=\"Results\" />\r\n-          </Link>\r\n-        </div>\r\n+        {/* Nav with CustomButtons */}\r\n+        <Nav fill variant=\"tabs\" className=\"justify-center mt-2\">\r\n+          <Nav.Item>\r\n+            <Link to=\"/\" className=\"nav-link p-0\">\r\n+              <CustomButton text=\"Registration\" active={location.pathname === \"/\"} />\r\n+            </Link>\r\n+          </Nav.Item>\r\n+          <Nav.Item>\r\n+            <Link to=\"/download\" className=\"nav-link p-0\">\r\n+              <CustomButton text=\"Download ID Card\" active={location.pathname === \"/download\"} />\r\n+            </Link>\r\n+          </Nav.Item>\r\n+          <Nav.Item>\r\n+            <Link to=\"/results\" className=\"nav-link p-0\">\r\n+              <CustomButton text=\"Results\" active={location.pathname === \"/results\"} />\r\n+            </Link>\r\n+          </Nav.Item>\r\n+        </Nav>\r\n+\r\n         <hr className=\"border-t mt-2 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749150723397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,44 +1,31 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import CustomButton from './Button';\r\n-import { Link, useLocation } from 'react-router-dom';\r\n-import Nav from 'react-bootstrap/Nav';\r\n+import { Link } from 'react-router-dom';\r\n \r\n const Header = () => {\r\n-  const location = useLocation();\r\n-\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n-        {/* Banner Image */}\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n \r\n-        {/* Nav with CustomButtons */}\r\n-        <Nav fill variant=\"tabs\" className=\"justify-center mt-2\">\r\n-          <Nav.Item>\r\n-            <Link to=\"/\" className=\"nav-link p-0\">\r\n-              <CustomButton text=\"Registration\" active={location.pathname === \"/\"} />\r\n-            </Link>\r\n-          </Nav.Item>\r\n-          <Nav.Item>\r\n-            <Link to=\"/download\" className=\"nav-link p-0\">\r\n-              <CustomButton text=\"Download ID Card\" active={location.pathname === \"/download\"} />\r\n-            </Link>\r\n-          </Nav.Item>\r\n-          <Nav.Item>\r\n-            <Link to=\"/results\" className=\"nav-link p-0\">\r\n-              <CustomButton text=\"Results\" active={location.pathname === \"/results\"} />\r\n-            </Link>\r\n-          </Nav.Item>\r\n-        </Nav>\r\n-\r\n+        <div className=\"flex justify-center gap-1 mt-1\">\r\n+          <Link to=\"/\">\r\n+            <CustomButton text=\"Registration\" active />\r\n+          </Link>\r\n+          <Link to=\"/download\">\r\n+            <CustomButton text=\"Download ID Card\" />\r\n+          </Link>\r\n+            <CustomButton text=\"Results\" />\r\n+          \r\n+        </div>\r\n         <hr className=\"border-t mt-2 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749150774079,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,31 +1,49 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n-import CustomButton from './Button';\r\n-import { Link } from 'react-router-dom';\r\n+import { Nav } from 'react-bootstrap';\r\n+import { Link, useLocation } from 'react-router-dom';\r\n \r\n const Header = () => {\r\n+  const location = useLocation();\r\n+\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n+        \r\n+        {/* Banner Image */}\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n \r\n-        <div className=\"flex justify-center gap-1 mt-1\">\r\n-          <Link to=\"/\">\r\n-            <CustomButton text=\"Registration\" active />\r\n-          </Link>\r\n-          <Link to=\"/download\">\r\n-            <CustomButton text=\"Download ID Card\" />\r\n-          </Link>\r\n-            <CustomButton text=\"Results\" />\r\n-          \r\n-        </div>\r\n+        {/* Bootstrap Nav Tabs */}\r\n+        <Nav\r\n+          variant=\"tabs\"\r\n+          activeKey={location.pathname}\r\n+          className=\"justify-center mt-2\"\r\n+        >\r\n+          <Nav.Item>\r\n+            <Nav.Link as={Link} to=\"/\" eventKey=\"/\">\r\n+              Registration\r\n+            </Nav.Link>\r\n+          </Nav.Item>\r\n+          <Nav.Item>\r\n+            <Nav.Link as={Link} to=\"/download\" eventKey=\"/download\">\r\n+              Download ID Card\r\n+            </Nav.Link>\r\n+          </Nav.Item>\r\n+          <Nav.Item>\r\n+            <Nav.Link as={Link} to=\"/results\" eventKey=\"/results\">\r\n+              Results\r\n+            </Nav.Link>\r\n+          </Nav.Item>\r\n+        </Nav>\r\n+\r\n+        {/* Horizontal Line */}\r\n         <hr className=\"border-t mt-2 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749150799009,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,10 +41,9 @@\n             </Nav.Link>\r\n           </Nav.Item>\r\n         </Nav>\r\n \r\n-        {/* Horizontal Line */}\r\n-        <hr className=\"border-t mt-2 border-gray-200 w-full max-w-[1000px] mx-auto\" />\r\n+       \r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749150855789,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import { Link, useLocation } from 'react-router-dom';\r\n+import './Header.css'; // Add this line\r\n \r\n const Header = () => {\r\n   const location = useLocation();\r\n \r\n@@ -22,9 +23,9 @@\n         {/* Bootstrap Nav Tabs */}\r\n         <Nav\r\n           variant=\"tabs\"\r\n           activeKey={location.pathname}\r\n-          className=\"justify-center mt-2\"\r\n+          className=\"justify-center mt-2 custom-tabs\"\r\n         >\r\n           <Nav.Item>\r\n             <Nav.Link as={Link} to=\"/\" eventKey=\"/\">\r\n               Registration\r\n@@ -40,10 +41,8 @@\n               Results\r\n             </Nav.Link>\r\n           </Nav.Item>\r\n         </Nav>\r\n-\r\n-       \r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749150861843,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import { Link, useLocation } from 'react-router-dom';\r\n-import './Header.css'; // Add this line\r\n \r\n const Header = () => {\r\n   const location = useLocation();\r\n \r\n@@ -23,9 +22,9 @@\n         {/* Bootstrap Nav Tabs */}\r\n         <Nav\r\n           variant=\"tabs\"\r\n           activeKey={location.pathname}\r\n-          className=\"justify-center mt-2 custom-tabs\"\r\n+          className=\"justify-center mt-2\"\r\n         >\r\n           <Nav.Item>\r\n             <Nav.Link as={Link} to=\"/\" eventKey=\"/\">\r\n               Registration\r\n@@ -41,8 +40,10 @@\n               Results\r\n             </Nav.Link>\r\n           </Nav.Item>\r\n         </Nav>\r\n+\r\n+       \r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749150895138,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import { Link, useLocation } from 'react-router-dom';\r\n+import './Header.css'; // Add this line\r\n \r\n const Header = () => {\r\n   const location = useLocation();\r\n \r\n@@ -22,9 +23,9 @@\n         {/* Bootstrap Nav Tabs */}\r\n         <Nav\r\n           variant=\"tabs\"\r\n           activeKey={location.pathname}\r\n-          className=\"justify-center mt-2\"\r\n+          className=\"justify-center mt-2 custom-tabs\"\r\n         >\r\n           <Nav.Item>\r\n             <Nav.Link as={Link} to=\"/\" eventKey=\"/\">\r\n               Registration\r\n@@ -40,10 +41,8 @@\n               Results\r\n             </Nav.Link>\r\n           </Nav.Item>\r\n         </Nav>\r\n-\r\n-       \r\n       </div>\r\n     </header>\r\n   );\r\n };\r\n"
+                },
+                {
+                    "date": 1749150902605,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import { Link, useLocation } from 'react-router-dom';\r\n-import './Header.css'; // Add this line\r\n+import '../''\r\n \r\n const Header = () => {\r\n   const location = useLocation();\r\n \r\n"
+                },
+                {
+                    "date": 1749150918156,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import { Link, useLocation } from 'react-router-dom';\r\n-import '../''\r\n+import '../App.css'\r\n \r\n const Header = () => {\r\n   const location = useLocation();\r\n \r\n"
+                },
+                {
+                    "date": 1749151018762,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,47 +1,29 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n-import { Link, useLocation } from 'react-router-dom';\r\n-import '../App.css'\r\n+import TabLink from './TabLink'; // import the new component\r\n+import './Header.css';\r\n \r\n const Header = () => {\r\n-  const location = useLocation();\r\n-\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n-        \r\n-        {/* Banner Image */}\r\n+\r\n+        {/* Banner */}\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n \r\n-        {/* Bootstrap Nav Tabs */}\r\n-        <Nav\r\n-          variant=\"tabs\"\r\n-          activeKey={location.pathname}\r\n-          className=\"justify-center mt-2 custom-tabs\"\r\n-        >\r\n-          <Nav.Item>\r\n-            <Nav.Link as={Link} to=\"/\" eventKey=\"/\">\r\n-              Registration\r\n-            </Nav.Link>\r\n-          </Nav.Item>\r\n-          <Nav.Item>\r\n-            <Nav.Link as={Link} to=\"/download\" eventKey=\"/download\">\r\n-              Download ID Card\r\n-            </Nav.Link>\r\n-          </Nav.Item>\r\n-          <Nav.Item>\r\n-            <Nav.Link as={Link} to=\"/results\" eventKey=\"/results\">\r\n-              Results\r\n-            </Nav.Link>\r\n-          </Nav.Item>\r\n+        {/* Tabs */}\r\n+        <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\">\r\n+          <TabLink to=\"/\" label=\"Registration\" />\r\n+          <TabLink to=\"/download\" label=\"Download ID Card\" />\r\n+          <TabLink to=\"/results\" label=\"Results\" />\r\n         </Nav>\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749151049558,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,29 +1,35 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n-import TabLink from './TabLink'; // import the new component\r\n-import './Header.css';\r\n+import '../App.css';\r\n+import TabLink from './TabLink';  // Import TabLink\r\n \r\n+const tabs = [\r\n+  { to: \"/\", label: \"Registration\" },\r\n+  { to: \"/download\", label: \"Download ID Card\" },\r\n+  { to: \"/results\", label: \"Results\" },\r\n+];\r\n+\r\n const Header = () => {\r\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n-\r\n-        {/* Banner */}\r\n+        \r\n+        {/* Banner Image */}\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n \r\n-        {/* Tabs */}\r\n-        <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\">\r\n-          <TabLink to=\"/\" label=\"Registration\" />\r\n-          <TabLink to=\"/download\" label=\"Download ID Card\" />\r\n-          <TabLink to=\"/results\" label=\"Results\" />\r\n+        {/* Bootstrap Nav Tabs */}\r\n+        <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\" activeKey={window.location.pathname}>\r\n+          {tabs.map(({ to, label }) => (\r\n+            <TabLink key={to} to={to} label={label} />\r\n+          ))}\r\n         </Nav>\r\n       </div>\r\n     </header>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749151061490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import '../App.css';\r\n-import TabLink from './TabLink';  // Import TabLink\r\n+import TabLink from './TabLink';  \r\n \r\n const tabs = [\r\n   { to: \"/\", label: \"Registration\" },\r\n   { to: \"/download\", label: \"Download ID Card\" },\r\n"
+                },
+                {
+                    "date": 1749151093853,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import '../App.css';\r\n-import TabLink from './TabLink';  \r\n+import Tab from '' \r\n \r\n const tabs = [\r\n   { to: \"/\", label: \"Registration\" },\r\n   { to: \"/download\", label: \"Download ID Card\" },\r\n"
+                },
+                {
+                    "date": 1749151100224,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\r\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import '../App.css';\r\n-import Tab from '' \r\n+import Tab from '../components/Tab' \r\n \r\n const tabs = [\r\n   { to: \"/\", label: \"Registration\" },\r\n   { to: \"/download\", label: \"Download ID Card\" },\r\n"
+                },
+                {
+                    "date": 1749151117943,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n \r\n         {/* Bootstrap Nav Tabs */}\r\n         <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\" activeKey={window.location.pathname}>\r\n           {tabs.map(({ to, label }) => (\r\n-            <TabLink key={to} to={to} label={label} />\r\n+            <Tab key={to} to={to} label={label} />\r\n           ))}\r\n         </Nav>\r\n       </div>\r\n     </header>\r\n"
+                },
+                {
+                    "date": 1749151886986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,38 +1,22 @@\n import React from 'react';\r\n-import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n-import '../App.css';\r\n-import Tab from '../components/Tab' \r\n+import { Link, useLocation } from 'react-router-dom';\r\n \r\n-const tabs = [\r\n-  { to: \"/\", label: \"Registration\" },\r\n-  { to: \"/download\", label: \"Download ID Card\" },\r\n-  { to: \"/results\", label: \"Results\" },\r\n-];\r\n+const Tab = ({ to, label }) => {\r\n+  const location = useLocation();\r\n+  const isActive = location.pathname === to;\r\n \r\n-const Header = () => {\r\n   return (\r\n-    <header className=\"bg-white w-full\">\r\n-      <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n-        \r\n-        {/* Banner Image */}\r\n-        <div className=\"flex justify-center items-center w-full\">\r\n-          <img\r\n-            src={Banner}\r\n-            alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n-          />\r\n-        </div>\r\n-\r\n-        {/* Bootstrap Nav Tabs */}\r\n-        <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\" activeKey={window.location.pathname}>\r\n-          {tabs.map(({ to, label }) => (\r\n-            <Tab key={to} to={to} label={label} />\r\n-          ))}\r\n-        </Nav>\r\n-      </div>\r\n-    </header>\r\n+    <Nav.Item>\r\n+      <Nav.Link\r\n+        as={Link}\r\n+        to={to}\r\n+        className={`custom-tab-link ${isActive ? 'active' : ''}`}\r\n+      >\r\n+        {label}\r\n+      </Nav.Link>\r\n+    </Nav.Item>\r\n   );\r\n };\r\n \r\n-export default Header;\r\n+export default Tab;\r\n"
+                },
+                {
+                    "date": 1749151902422,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,38 @@\n import React from 'react';\r\n+import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n-import { Link, useLocation } from 'react-router-dom';\r\n+import '../App.css';\r\n+import Tab from '../components/Tab';\r\n \r\n-const Tab = ({ to, label }) => {\r\n-  const location = useLocation();\r\n-  const isActive = location.pathname === to;\r\n+const tabs = [\r\n+  { to: \"/\", label: \"Registration\" },\r\n+  { to: \"/download\", label: \"Download ID Card\" },\r\n+  { to: \"/results\", label: \"Results\" },\r\n+];\r\n \r\n+const Header = () => {\r\n   return (\r\n-    <Nav.Item>\r\n-      <Nav.Link\r\n-        as={Link}\r\n-        to={to}\r\n-        className={`custom-tab-link ${isActive ? 'active' : ''}`}\r\n-      >\r\n-        {label}\r\n-      </Nav.Link>\r\n-    </Nav.Item>\r\n+    <header className=\"bg-white w-full\">\r\n+      <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n+        \r\n+        {/* Banner Image */}\r\n+        <div className=\"flex justify-center items-center w-full\">\r\n+          <img\r\n+            src={Banner}\r\n+            alt=\"Banner\"\r\n+            className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n+          />\r\n+        </div>\r\n+\r\n+        {/* Bootstrap Nav Tabs */}\r\n+        <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\">\r\n+          {tabs.map(({ to, label }) => (\r\n+            <Tab key={to} to={to} label={label} />\r\n+          ))}\r\n+        </Nav>\r\n+      </div>\r\n+    </header>\r\n   );\r\n };\r\n \r\n-export default Tab;\r\n+export default Header;\r\n"
+                },
+                {
+                    "date": 1749152381088,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,8 @@\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n-        {/* Banner Image */}\r\n         <div className=\"flex justify-center items-center w-full\">\r\n           <img\r\n             src={Banner}\r\n             alt=\"Banner\"\r\n"
+                },
+                {
+                    "date": 1749152386495,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,8 @@\n             className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n           />\r\n         </div>\r\n \r\n-        {/* Bootstrap Nav Tabs */}\r\n         <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\">\r\n           {tabs.map(({ to, label }) => (\r\n             <Tab key={to} to={to} label={label} />\r\n           ))}\r\n"
+                },
+                {
+                    "date": 1749152433294,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,16 +14,9 @@\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n-        <div className=\"flex justify-center items-center w-full\">\r\n-          <img\r\n-            src={Banner}\r\n-            alt=\"Banner\"\r\n-            className=\"h-auto w-full max-w-[1000px] object-contain\"\r\n-          />\r\n-        </div>\r\n-\r\n+        \r\n         <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\">\r\n           {tabs.map(({ to, label }) => (\r\n             <Tab key={to} to={to} label={label} />\r\n           ))}\r\n"
+                },
+                {
+                    "date": 1749152476110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,12 @@\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n-        \r\n+        <div className=\"flex justify-center items-center w-full\">\r\n+          \r\n+        </div>\r\n+\r\n         <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\">\r\n           {tabs.map(({ to, label }) => (\r\n             <Tab key={to} to={to} label={label} />\r\n           ))}\r\n"
+                },
+                {
+                    "date": 1749152492527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n-        <div className=\"flex justify-center items-center w-full\">\r\n+        <div className=\"flex justify-center items-center w-full\" b>\r\n           \r\n         </div>\r\n \r\n         <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\">\r\n"
+                },
+                {
+                    "date": 1749152499359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n-        <div className=\"flex justify-center items-center w-full\" b>\r\n+        <div className=\"flex justify-center items-center w-full \">\r\n           \r\n         </div>\r\n \r\n         <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\">\r\n"
+                },
+                {
+                    "date": 1749152670346,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,12 +14,16 @@\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n-        <div className=\"flex justify-center items-center w-full \">\r\n-          \r\n-        </div>\r\n+      <div\r\n+  className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n+  style={{ backgroundImage: \"url('/your-image.jpg')\" }}\r\n+>\r\n+  {/* Your content here */}\r\n+</div>\r\n \r\n+\r\n         <Nav variant=\"tabs\" className=\"justify-center mt-2 custom-tabs\">\r\n           {tabs.map(({ to, label }) => (\r\n             <Tab key={to} to={to} label={label} />\r\n           ))}\r\n"
+                },
+                {
+                    "date": 1749152681082,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n       <div\r\n   className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n-  style={{ backgroundImage: \"url('/your-image.jpg')\" }}\r\n+  style={{ backgroundImage: \"url('/your-i)\" }}\r\n >\r\n   {/* Your content here */}\r\n </div>\r\n \r\n"
+                },
+                {
+                    "date": 1749152689032,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import '../App.css';\r\n import Tab from '../components/Tab';\r\n+import \r\n \r\n const tabs = [\r\n   { to: \"/\", label: \"Registration\" },\r\n   { to: \"/download\", label: \"Download ID Card\" },\r\n@@ -16,9 +17,9 @@\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n       <div\r\n   className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n-  style={{ backgroundImage: \"url('/your-i)\" }}\r\n+  style={{ backgroundImage: \"url('/your-image.jpg')\" }}\r\n >\r\n   {/* Your content here */}\r\n </div>\r\n \r\n"
+                },
+                {
+                    "date": 1749152694416,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import '../App.css';\r\n import Tab from '../components/Tab';\r\n-import \r\n+import bg from ''\r\n \r\n const tabs = [\r\n   { to: \"/\", label: \"Registration\" },\r\n   { to: \"/download\", label: \"Download ID Card\" },\r\n"
+                },
+                {
+                    "date": 1749152701082,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import '../App.css';\r\n import Tab from '../components/Tab';\r\n-import bg from ''\r\n+import bg from '../assets'\r\n \r\n const tabs = [\r\n   { to: \"/\", label: \"Registration\" },\r\n   { to: \"/download\", label: \"Download ID Card\" },\r\n"
+                },
+                {
+                    "date": 1749152709948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import '../App.css';\r\n import Tab from '../components/Tab';\r\n-import bg from '../assets'\r\n+import bg from '../assets/bg'\r\n \r\n const tabs = [\r\n   { to: \"/\", label: \"Registration\" },\r\n   { to: \"/download\", label: \"Download ID Card\" },\r\n"
+                },
+                {
+                    "date": 1749152720314,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import Banner from \"../assets/Banner.jpg\";\r\n import { Nav } from 'react-bootstrap';\r\n import '../App.css';\r\n import Tab from '../components/Tab';\r\n-import bg from '../assets/bg'\r\n+import bg from '../assets/bg.jpg'\r\n \r\n const tabs = [\r\n   { to: \"/\", label: \"Registration\" },\r\n   { to: \"/download\", label: \"Download ID Card\" },\r\n"
+                },
+                {
+                    "date": 1749152730956,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n       <div\r\n   className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n-  style={{ backgroundImage: \"url('/your-image.jpg')\" }}\r\n+  style={{ backgroundImage: \"url()\" }}\r\n >\r\n   {/* Your content here */}\r\n </div>\r\n \r\n"
+                },
+                {
+                    "date": 1749152738091,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n       <div\r\n   className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n-  style={{ backgroundImage: \"url()\" }}\r\n+  style={{ backgroundImage: url({bg}) }}\r\n >\r\n   {/* Your content here */}\r\n </div>\r\n \r\n"
+                },
+                {
+                    "date": 1749152765087,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n       <div\r\n   className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n-  style={{ backgroundImage: url({bg}) }}\r\n+  style={{ backgroundImage: \"url('/your-image.jpg')\" }}\r\n >\r\n   {/* Your content here */}\r\n </div>\r\n \r\n"
+                },
+                {
+                    "date": 1749152771244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n       <div\r\n   className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n-  style={{ backgroundImage: \"url('/your-image.jpg')\" }}\r\n+  style={{ backgroundImage: \"url()\" }}\r\n >\r\n   {/* Your content here */}\r\n </div>\r\n \r\n"
+                },
+                {
+                    "date": 1749152778554,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n       <div\r\n   className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n-  style={{ backgroundImage: \"url()\" }}\r\n+  style={{ backgroundImage: \"url(${bg})\" }}\r\n >\r\n   {/* Your content here */}\r\n </div>\r\n \r\n"
+                },
+                {
+                    "date": 1749152785778,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n       <div\r\n   className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n-  style={{ backgroundImage: \"url(${bg})\" }}\r\n+  style={{ backgroundImage: \"url('/your-image.jpg')\" }}\r\n >\r\n   {/* Your content here */}\r\n </div>\r\n \r\n"
+                },
+                {
+                    "date": 1749152823864,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,11 +15,11 @@\n   return (\r\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n-      <div\r\n+   <div\r\n   className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n-  style={{ backgroundImage: \"url('/your-image.jpg')\" }}\r\n+  style={{ backgroundImage: `url(${bg})` }}\r\n >\r\n   {/* Your content here */}\r\n </div>\r\n \r\n"
+                },
+                {
+                    "date": 1749152848998,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n    <div\r\n-  className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n+  \r\n   style={{ backgroundImage: `url(${bg})` }}\r\n >\r\n   {/* Your content here */}\r\n </div>\r\n"
+                },
+                {
+                    "date": 1749152858667,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n     <header className=\"bg-white w-full\">\r\n       <div className=\"w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3\">\r\n         \r\n    <div\r\n-  className=\"flex justify-center items-center w-full h-screen bg-cover bg-center\"\r\n+  className=\"flex justify-center items-center h-screen bg-cover bg-center\"\r\n   style={{ backgroundImage: `url(${bg})` }}\r\n >\r\n   {/* Your content here */}\r\n </div>\r\n"
+                },
+                {
+                    "date": 1749154606096,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,9 +50,9 @@\n           <img src={logo} alt=\"Saylani Logo\" className=\"h-[60px] mb-1\" />\r\n \r\n           {/* Centered heading right below logo */}\r\n           <h3 className=\"text-md font-semibold text-center mb-2\">\r\n-            <b>>Registration Form-SMIT\r\n+            <b>>Registration Form-SMIT</b\r\n           </h3>\r\n \r\n           {/* Bottom row: social icons left, button right */}\r\n           <div className=\"w-full flex justify-between items-center text-gray-700 px-4\">\r\n"
+                }
+            ],
+            "date": 1748950894034,
+            "name": "Commit-0",
+            "content": "impo"
+        }
+    ]
+}

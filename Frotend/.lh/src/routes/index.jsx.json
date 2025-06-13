@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/routes/index.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1748948228743,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748948235467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import Home from './pages/Home';\r\n import About from './pages/About';\r\n import Contact from './pages/Contact';\r\n \r\n-function () {\r\n+function r() {\r\n   return (\r\n     <BrowserRouter>\r\n       <Routes>\r\n         {/* Layout wraps all pages */}\r\n"
+                },
+                {
+                    "date": 1748951154367,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,22 @@\n+import React from 'react';\r\n+import { BrowserRouter, Routes, Route } from 'react-router-dom';\r\n+import Layout from '../layout/index';\r\n+import Download from '../pages/download'\r\n+\r\n+\r\n+\r\n+function Routes() {\r\n+  return (\r\n+    <BrowserRouter>\r\n+      <Routes>\r\n+        {/* Layout wraps all pages */}\r\n+        <Route path=\"/\" element={<Layout />}>\r\n+          <Route path=\"download\" element={<Download />} />\r\n+          <Route path=\"contact\" element={<Contact />} />\r\n+        </Route>\r\n+      </Routes>\r\n+    </BrowserRouter>\r\n+  );\r\n+}\r\n+\r\n+export default Routes;\r\n"
+                }
+            ],
+            "date": 1748948228743,
+            "name": "Commit-0",
+            "content": "import React from 'react';\r\nimport { BrowserRouter, Routes, Route } from 'react-router-dom';\r\nimport Layout from './components/Layout';\r\nimport Home from './pages/Home';\r\nimport About from './pages/About';\r\nimport Contact from './pages/Contact';\r\n\r\nfunction App() {\r\n  return (\r\n    <BrowserRouter>\r\n      <Routes>\r\n        {/* Layout wraps all pages */}\r\n        <Route path=\"/\" element={<Layout />}>\r\n          {/* Nested routes */}\r\n          <Route index element={<Home />} />\r\n          <Route path=\"about\" element={<About />} />\r\n          <Route path=\"contact\" element={<Contact />} />\r\n        </Route>\r\n      </Routes>\r\n    </BrowserRouter>\r\n  );\r\n}\r\n\r\nexport default App;\r\n"
+        }
+    ]
+}

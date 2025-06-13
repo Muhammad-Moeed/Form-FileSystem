@@ -1,0 +1,34 @@
+{
+    "sourceFile": "src/components/Tab.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1749151077115,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749151212474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n import { Link, useLocation } from 'react-router-dom';\r\n \r\n const TabLink = ({ to, label }) => {\r\n   const location = useLocation();\r\n-  const isActive = location.pathname === to;\r\n+  const isActive = location.pathname.startsWith(to); // ← Yeh change hai\r\n \r\n   return (\r\n     <Nav.Item>\r\n       <Nav.Link\r\n@@ -19,5 +19,5 @@\n     </Nav.Item>\r\n   );\r\n };\r\n \r\n-export default Tab;\r\n+export default TabLink;\r\n"
+                },
+                {
+                    "date": 1749151233583,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,11 @@\n import React from 'react';\r\n import { Nav } from 'react-bootstrap';\r\n import { Link, useLocation } from 'react-router-dom';\r\n \r\n-const TabLink = ({ to, label }) => {\r\n+const Tab = ({ to, label }) => {\r\n   const location = useLocation();\r\n-  const isActive = location.pathname.startsWith(to); // ← Yeh change hai\r\n+  const isActive = location.pathname.startsWith(to);\r\n \r\n   return (\r\n     <Nav.Item>\r\n       <Nav.Link\r\n@@ -19,5 +19,5 @@\n     </Nav.Item>\r\n   );\r\n };\r\n \r\n-export default TabLink;\r\n+export default Tab;\r\n"
+                },
+                {
+                    "date": 1749151665259,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n import { Link, useLocation } from 'react-router-dom';\r\n \r\n const Tab = ({ to, label }) => {\r\n   const location = useLocation();\r\n-  const isActive = location.pathname.startsWith(to);\r\n+  const isActive = location.pathname === to;\r\n \r\n   return (\r\n     <Nav.Item>\r\n       <Nav.Link\r\n"
+                },
+                {
+                    "date": 1749151896868,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,8 @@\n     <Nav.Item>\r\n       <Nav.Link\r\n         as={Link}\r\n         to={to}\r\n-        eventKey={to}\r\n         className={`custom-tab-link ${isActive ? 'active' : ''}`}\r\n       >\r\n         {label}\r\n       </Nav.Link>\r\n"
+                }
+            ],
+            "date": 1749151077115,
+            "name": "Commit-0",
+            "content": "import React from 'react';\r\nimport { Nav } from 'react-bootstrap';\r\nimport { Link, useLocation } from 'react-router-dom';\r\n\r\nconst TabLink = ({ to, label }) => {\r\n  const location = useLocation();\r\n  const isActive = location.pathname === to;\r\n\r\n  return (\r\n    <Nav.Item>\r\n      <Nav.Link\r\n        as={Link}\r\n        to={to}\r\n        eventKey={to}\r\n        className={`custom-tab-link ${isActive ? 'active' : ''}`}\r\n      >\r\n        {label}\r\n      </Nav.Link>\r\n    </Nav.Item>\r\n  );\r\n};\r\n\r\nexport default Tab;\r\n"
+        }
+    ]
+}

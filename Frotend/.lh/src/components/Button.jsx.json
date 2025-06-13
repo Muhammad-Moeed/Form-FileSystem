@@ -1,0 +1,130 @@
+{
+    "sourceFile": "src/components/Button.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 28,
+            "patches": [
+                {
+                    "date": 1749118495502,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749118973091,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,12 @@\n \r\n const CustomButton = ({ text, active }) => {\r\n   return (\r\n     <Button\r\n-      variant=\"light\" // white background\r\n+      variant=\"light\"\r\n       style={{\r\n         color: active ? 'green' : 'blue',\r\n-        border: '1px solid blue',\r\n+        border: '1px solid gray',\r\n         fontWeight: 'bold',\r\n       }}\r\n       active={active}\r\n     >\r\n"
+                },
+                {
+                    "date": 1749119294739,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,15 @@\n import React from 'react';\r\n-import Button from 'react-bootstrap/Button';\r\n \r\n const CustomButton = ({ text, active }) => {\r\n   return (\r\n-    <Button\r\n-      variant=\"light\"\r\n-      style={{\r\n-        color: active ? 'green' : 'blue',\r\n-        border: '1px solid gray',\r\n-        fontWeight: 'bold',\r\n-      }}\r\n-      active={active}\r\n+    <button\r\n+      className={`px-4 py-1 font-semibold rounded \r\n+        ${active ? 'text-green-600' : 'text-blue-600'} \r\n+        bg-white hover:bg-blue-50 transition-all`}\r\n     >\r\n       {text}\r\n-    </Button>\r\n+    </button>\r\n   );\r\n };\r\n \r\n export default CustomButton;\r\n"
+                },
+                {
+                    "date": 1749119299950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,20 @@\n import React from 'react';\r\n+import Button from 'react-bootstrap/Button';\r\n \r\n const CustomButton = ({ text, active }) => {\r\n   return (\r\n-    <button\r\n-      className={`px-4 py-1 font-semibold rounded \r\n-        ${active ? 'text-green-600' : 'text-blue-600'} \r\n-        bg-white hover:bg-blue-50 transition-all`}\r\n+    <Button\r\n+      variant=\"light\"\r\n+      style={{\r\n+        color: active ? 'green' : 'blue',\r\n+        border: '1px solid gray',\r\n+        fontWeight: 'bold',\r\n+      }}\r\n+      active={active}\r\n     >\r\n       {text}\r\n-    </button>\r\n+    </Button>\r\n   );\r\n };\r\n \r\n export default CustomButton;\r\n"
+                },
+                {
+                    "date": 1749119435410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   return (\r\n     <Button\r\n       variant=\"light\"\r\n       style={{\r\n-        color: active ? 'green' : 'blue',\r\n+        color: active ? '#b4d45e' : 'blue',\r\n         border: '1px solid gray',\r\n         fontWeight: 'bold',\r\n       }}\r\n       active={active}\r\n"
+                },
+                {
+                    "date": 1749119503741,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   return (\r\n     <Button\r\n       variant=\"light\"\r\n       style={{\r\n-        color: active ? '#b4d45e' : 'blue',\r\n+        color: active ? '#b0ca62' : 'blue',\r\n         border: '1px solid gray',\r\n         fontWeight: 'bold',\r\n       }}\r\n       active={active}\r\n"
+                },
+                {
+                    "date": 1749119526263,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   return (\r\n     <Button\r\n       variant=\"light\"\r\n       style={{\r\n-        color: active ? '#b0ca62' : 'blue',\r\n+        color: active ? '#95c74b' : 'blue',\r\n         border: '1px solid gray',\r\n         fontWeight: 'bold',\r\n       }}\r\n       active={active}\r\n"
+                },
+                {
+                    "date": 1749119541695,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   return (\r\n     <Button\r\n       variant=\"light\"\r\n       style={{\r\n-        color: active ? '#95c74b' : 'blue',\r\n+        color: active ? '#8fc34a' : 'blue',\r\n         border: '1px solid gray',\r\n         fontWeight: 'bold',\r\n       }}\r\n       active={active}\r\n"
+                },
+                {
+                    "date": 1749119562841,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   return (\r\n     <Button\r\n       variant=\"light\"\r\n       style={{\r\n-        color: active ? '#8fc34a' : 'blue',\r\n+        color: active ? '#8fc34a' : '#6ca3d2',\r\n         border: '1px solid gray',\r\n         fontWeight: 'bold',\r\n       }}\r\n       active={active}\r\n"
+                },
+                {
+                    "date": 1749119583690,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n       variant=\"light\"\r\n       style={{\r\n         color: active ? '#8fc34a' : '#6ca3d2',\r\n         border: '1px solid gray',\r\n-        fontWeight: 'bold',\r\n+       \r\n       }}\r\n       active={active}\r\n     >\r\n       {text}\r\n"
+                },
+                {
+                    "date": 1749119627270,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   return (\r\n     <Button\r\n       variant=\"light\"\r\n       style={{\r\n-        color: active ? '#8fc34a' : '#6ca3d2',\r\n+        color: active ? '#95c74b' : '#6ca3d2',\r\n         border: '1px solid gray',\r\n        \r\n       }}\r\n       active={active}\r\n"
+                },
+                {
+                    "date": 1749119645404,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,11 +5,11 @@\n   return (\r\n     <Button\r\n       variant=\"light\"\r\n       style={{\r\n-        color: active ? '#95c74b' : '#6ca3d2',\r\n+        color: active ? '#8fc34a' : '#6ca3d2',\r\n         border: '1px solid gray',\r\n-       \r\n+        fontWeight: 'bold',\r\n       }}\r\n       active={active}\r\n     >\r\n       {text}\r\n"
+                },
+                {
+                    "date": 1749119719327,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,14 +4,16 @@\n const CustomButton = ({ text, active }) => {\r\n   return (\r\n     <Button\r\n       variant=\"light\"\r\n+      active={active}\r\n       style={{\r\n+        backgroundColor: 'transparent',     // default BG transparent\r\n         color: active ? '#8fc34a' : '#6ca3d2',\r\n-        border: '1px solid gray',\r\n-        fontWeight: 'bold',\r\n+        border: 'none',                     // remove border\r\n+        boxShadow: 'none',                  // remove focus shadow\r\n       }}\r\n-      active={active}\r\n+      className=\"no-hover-bg\"\r\n     >\r\n       {text}\r\n     </Button>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119745803,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,10 @@\n     <Button\r\n       variant=\"light\"\r\n       active={active}\r\n       style={{\r\n-        backgroundColor: 'transparent',     // default BG transparent\r\n+        backgroundColor: 'transparent', \r\n+            // default BG transparent\r\n         color: active ? '#8fc34a' : '#6ca3d2',\r\n         border: 'none',                     // remove border\r\n         boxShadow: 'none',                  // remove focus shadow\r\n       }}\r\n"
+                },
+                {
+                    "date": 1749119751911,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,12 +7,11 @@\n       variant=\"light\"\r\n       active={active}\r\n       style={{\r\n         backgroundColor: 'transparent', \r\n-            // default BG transparent\r\n         color: active ? '#8fc34a' : '#6ca3d2',\r\n-        border: 'none',                     // remove border\r\n-        boxShadow: 'none',                  // remove focus shadow\r\n+        border: 'none',                 \r\n+        boxShadow: 'none',              \r\n       }}\r\n       className=\"no-hover-bg\"\r\n     >\r\n       {text}\r\n"
+                },
+                {
+                    "date": 1749119763612,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n       active={active}\r\n       style={{\r\n         backgroundColor: 'transparent', \r\n         color: active ? '#8fc34a' : '#6ca3d2',\r\n-        border: 'none',                 \r\n+        border: '1 px solid black',                 \r\n         boxShadow: 'none',              \r\n       }}\r\n       className=\"no-hover-bg\"\r\n     >\r\n"
+                },
+                {
+                    "date": 1749119777717,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,10 @@\n       style={{\r\n         backgroundColor: 'transparent', \r\n         color: active ? '#8fc34a' : '#6ca3d2',\r\n         border: '1 px solid black',                 \r\n-        boxShadow: 'none',              \r\n+        boxShadow: 'none',  \r\n+                    \r\n       }}\r\n       className=\"no-hover-bg\"\r\n     >\r\n       {text}\r\n"
+                },
+                {
+                    "date": 1749119783794,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n         backgroundColor: 'transparent', \r\n         color: active ? '#8fc34a' : '#6ca3d2',\r\n         border: '1 px solid black',                 \r\n         boxShadow: 'none',  \r\n-                    \r\n+        borderRadius            \r\n       }}\r\n       className=\"no-hover-bg\"\r\n     >\r\n       {text}\r\n"
+                },
+                {
+                    "date": 1749119789461,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n         backgroundColor: 'transparent', \r\n         color: active ? '#8fc34a' : '#6ca3d2',\r\n         border: '1 px solid black',                 \r\n         boxShadow: 'none',  \r\n-        borderRadius            \r\n+        borderRadius:'none'            \r\n       }}\r\n       className=\"no-hover-bg\"\r\n     >\r\n       {text}\r\n"
+                },
+                {
+                    "date": 1749119795241,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n         backgroundColor: 'transparent', \r\n         color: active ? '#8fc34a' : '#6ca3d2',\r\n         border: '1 px solid black',                 \r\n         boxShadow: 'none',  \r\n-        borderRadius:'none'            \r\n+        |\r\n       }}\r\n       className=\"no-hover-bg\"\r\n     >\r\n       {text}\r\n"
+                },
+                {
+                    "date": 1749119902890,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,11 +10,11 @@\n         backgroundColor: 'transparent', \r\n         color: active ? '#8fc34a' : '#6ca3d2',\r\n         border: '1 px solid black',                 \r\n         boxShadow: 'none',  \r\n-        |\r\n+        \r\n       }}\r\n-      className=\"no-hover-bg\"\r\n+      className=\"no-hover-bg border-gray-300\"\r\n     >\r\n       {text}\r\n     </Button>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749119914781,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,9 @@\n       variant=\"light\"\r\n       active={active}\r\n       style={{\r\n         backgroundColor: 'transparent', \r\n-        color: active ? '#8fc34a' : '#6ca3d2',\r\n-        border: '1 px solid black',                 \r\n+        color: active ? '#8fc34a' : '#6ca3d2',           \r\n         boxShadow: 'none',  \r\n         \r\n       }}\r\n       className=\"no-hover-bg border-gray-300\"\r\n"
+                },
+                {
+                    "date": 1749120161138,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,16 +4,16 @@\n const CustomButton = ({ text, active }) => {\r\n   return (\r\n     <Button\r\n       variant=\"light\"\r\n-      active={active}\r\n       style={{\r\n-        backgroundColor: 'transparent', \r\n-        color: active ? '#8fc34a' : '#6ca3d2',           \r\n-        boxShadow: 'none',  \r\n-        \r\n+        color: active ? '#8fc34a' : '#6ca3d2',\r\n+        border: '1px solid gray',\r\n+        borderBottom: 'none', // 👈 removes bottom border\r\n+        fontWeight: 'bold',\r\n+        borderRadius: '0', // optional: flat style like Saylani\r\n       }}\r\n-      className=\"no-hover-bg border-gray-300\"\r\n+      active={active}\r\n     >\r\n       {text}\r\n     </Button>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749120179838,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,16 +4,16 @@\n const CustomButton = ({ text, active }) => {\r\n   return (\r\n     <Button\r\n       variant=\"light\"\r\n+      active={active}\r\n       style={{\r\n-        color: active ? '#8fc34a' : '#6ca3d2',\r\n-        border: '1px solid gray',\r\n-        borderBottom: 'none', // 👈 removes bottom border\r\n-        fontWeight: 'bold',\r\n-        borderRadius: '0', // optional: flat style like Saylani\r\n+        backgroundColor: 'transparent', \r\n+        color: active ? '#8fc34a' : '#6ca3d2',           \r\n+        boxShadow: 'none',  \r\n+        \r\n       }}\r\n-      active={active}\r\n+      className=\"no-hover-bg border-gray-300\"\r\n     >\r\n       {text}\r\n     </Button>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749120203321,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,14 +6,15 @@\n     <Button\r\n       variant=\"light\"\r\n       active={active}\r\n       style={{\r\n-        backgroundColor: 'transparent', \r\n-        color: active ? '#8fc34a' : '#6ca3d2',           \r\n-        boxShadow: 'none',  \r\n-        \r\n+        backgroundColor: 'transparent',\r\n+        color: active ? '#8fc34a' : '#6ca3d2',\r\n+        boxShadow: 'none',\r\n+        border: '1px solid #ccc',\r\n+        borderBottom: 'none', // 👈 bottom line hata di\r\n       }}\r\n-      className=\"no-hover-bg border-gray-300\"\r\n+      className=\"custom-no-hover\"\r\n     >\r\n       {text}\r\n     </Button>\r\n   );\r\n"
+                },
+                {
+                    "date": 1749150457113,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n         backgroundColor: 'transparent',\r\n         color: active ? '#8fc34a' : '#6ca3d2',\r\n         boxShadow: 'none',\r\n         border: '1px solid #ccc',\r\n-        borderBottom: 'none', // 👈 bottom line hata di\r\n+        borderBottom: 'none', \r\n       }}\r\n       className=\"custom-no-hover\"\r\n     >\r\n       {text}\r\n"
+                },
+                {
+                    "date": 1749150473417,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,23 +1,24 @@\n-import React from 'react';\r\n-import Button from 'react-bootstrap/Button';\r\n+import Nav from 'react-bootstrap/Nav';\r\n \r\n-const CustomButton = ({ text, active }) => {\r\n+function FillExample() {\r\n   return (\r\n-    <Button\r\n-      variant=\"light\"\r\n-      active={active}\r\n-      style={{\r\n-        backgroundColor: 'transparent',\r\n-        color: active ? '#8fc34a' : '#6ca3d2',\r\n-        boxShadow: 'none',\r\n-        border: '1px solid #ccc',\r\n-        borderBottom: 'none', \r\n-      }}\r\n-      className=\"custom-no-hover\"\r\n-    >\r\n-      {text}\r\n-    </Button>\r\n+    <Nav fill variant=\"tabs\" defaultActiveKey=\"/home\">\r\n+      <Nav.Item>\r\n+        <Nav.Link href=\"/home\">Active</Nav.Link>\r\n+      </Nav.Item>\r\n+      <Nav.Item>\r\n+        <Nav.Link eventKey=\"link-1\">Loooonger NavLink</Nav.Link>\r\n+      </Nav.Item>\r\n+      <Nav.Item>\r\n+        <Nav.Link eventKey=\"link-2\">Link</Nav.Link>\r\n+      </Nav.Item>\r\n+      <Nav.Item>\r\n+        <Nav.Link eventKey=\"disabled\" disabled>\r\n+          Disabled\r\n+        </Nav.Link>\r\n+      </Nav.Item>\r\n+    </Nav>\r\n   );\r\n-};\r\n+}\r\n \r\n-export default CustomButton;\r\n+export default FillExample;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749150498861,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,24 +1,23 @@\n-import Nav from 'react-bootstrap/Nav';\r\n+import React from 'react';\r\n+import Button from 'react-bootstrap/Button';\r\n \r\n-function FillExample() {\r\n+const CustomButton = ({ text, active }) => {\r\n   return (\r\n-    <Nav fill variant=\"tabs\" defaultActiveKey=\"/home\">\r\n-      <Nav.Item>\r\n-        <Nav.Link href=\"/home\">Active</Nav.Link>\r\n-      </Nav.Item>\r\n-      <Nav.Item>\r\n-        <Nav.Link eventKey=\"link-1\">Loooonger NavLink</Nav.Link>\r\n-      </Nav.Item>\r\n-      <Nav.Item>\r\n-        <Nav.Link eventKey=\"link-2\">Link</Nav.Link>\r\n-      </Nav.Item>\r\n-      <Nav.Item>\r\n-        <Nav.Link eventKey=\"disabled\" disabled>\r\n-          Disabled\r\n-        </Nav.Link>\r\n-      </Nav.Item>\r\n-    </Nav>\r\n+    <Button\r\n\\ No newline at end of file\n+      variant=\"light\"\r\n+      active={active}\r\n+      style={{\r\n+        backgroundColor: 'transparent',\r\n+        color: active ? '#8fc34a' : '#6ca3d2',\r\n+        boxShadow: 'none',\r\n+        border: '1px solid #ccc',\r\n+        borderBottom: 'none', \r\n+      }}\r\n+      className=\"custom-no-hover\"\r\n+    >\r\n+      {text}\r\n+    </Button>\r\n   );\r\n-}\r\n+};\r\n \r\n-export default FillExample;\n+export default CustomButton;\r\n"
+                },
+                {
+                    "date": 1749151000123,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,23 +1,23 @@\n import React from 'react';\r\n-import Button from 'react-bootstrap/Button';\r\n+import { Nav } from 'react-bootstrap';\r\n+import { Link, useLocation } from 'react-router-dom';\r\n \r\n-const CustomButton = ({ text, active }) => {\r\n+const TabLink = ({ to, label }) => {\r\n+  const location = useLocation();\r\n+  const isActive = location.pathname === to;\r\n+\r\n   return (\r\n-    <Button\r\n-      variant=\"light\"\r\n-      active={active}\r\n-      style={{\r\n-        backgroundColor: 'transparent',\r\n-        color: active ? '#8fc34a' : '#6ca3d2',\r\n-        boxShadow: 'none',\r\n-        border: '1px solid #ccc',\r\n-        borderBottom: 'none', \r\n-      }}\r\n-      className=\"custom-no-hover\"\r\n-    >\r\n\\ No newline at end of file\n-      {text}\r\n-    </Button>\r\n+    <Nav.Item>\r\n+      <Nav.Link\r\n+        as={Link}\r\n+        to={to}\r\n+        eventKey={to}\r\n+        className={`custom-tab-link ${isActive ? 'active' : ''}`}\r\n+      >\r\n+        {label}\r\n+      </Nav.Link>\r\n+    </Nav.Item>\r\n   );\r\n };\r\n \r\n-export default CustomButton;\n+export default TabLink;\r\n"
+                }
+            ],
+            "date": 1749118495502,
+            "name": "Commit-0",
+            "content": "import React from 'react';\r\nimport Button from 'react-bootstrap/Button';\r\n\r\nconst CustomButton = ({ text, active }) => {\r\n  return (\r\n    <Button\r\n      variant=\"light\" // white background\r\n      style={{\r\n        color: active ? 'green' : 'blue',\r\n        border: '1px solid blue',\r\n        fontWeight: 'bold',\r\n      }}\r\n      active={active}\r\n    >\r\n      {text}\r\n    </Button>\r\n  );\r\n};\r\n\r\nexport default CustomButton;\r\n"
+        }
+    ]
+}

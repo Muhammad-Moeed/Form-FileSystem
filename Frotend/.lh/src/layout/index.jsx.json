@@ -1,0 +1,54 @@
+{
+    "sourceFile": "src/layout/index.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1748948142948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748948161800,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   return (\r\n     <>\r\n       <Header />\r\n       <main>\r\n-        <Outlet /> {/* Yeh jagah pe current route ka page render hoga */}\r\n+        <Outlet />\r\n       </main>\r\n       <Footer />\r\n     </>\r\n   );\r\n"
+                },
+                {
+                    "date": 1748948407199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n import Header from './Header';\r\n-import Footer from './Footer';\r\n \r\n function Layout() {\r\n   return (\r\n     <>\r\n"
+                },
+                {
+                    "date": 1748950970688,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,15 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n-import Header from './Header';\r\n+import Header from '..';\r\n \r\n function Layout() {\r\n   return (\r\n     <>\r\n       <Header />\r\n       <main>\r\n         <Outlet />\r\n       </main>\r\n-      <Footer />\r\n     </>\r\n   );\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1748950976898,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n-import Header from '..';\r\n+import Header from '../components/Header';\r\n \r\n function Layout() {\r\n   return (\r\n     <>\r\n"
+                },
+                {
+                    "date": 1748951764753,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,13 @@\n \r\n function Layout() {\r\n   return (\r\n     <>\r\n-      <Header />\r\n+      <Header / class name {\r\n+        constructor(parameters) {\r\n+          \r\n+        }\r\n+      }>\r\n       <main>\r\n         <Outlet />\r\n       </main>\r\n     </>\r\n"
+                },
+                {
+                    "date": 1748951776076,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,13 +4,10 @@\n \r\n function Layout() {\r\n   return (\r\n     <>\r\n-      <Header / class name {\r\n-        constructor(parameters) {\r\n-          \r\n-        }\r\n-      }>\r\n+    <div></div>\r\n+      <Header />\r\n       <main>\r\n         <Outlet />\r\n       </main>\r\n     </>\r\n"
+                },
+                {
+                    "date": 1748951783863,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,11 @@\n \r\n function Layout() {\r\n   return (\r\n     <>\r\n-    <div></div>\r\n+    <div className='</div>'>\r\n       <Header />\r\n+      </div>\r\n       <main>\r\n         <Outlet />\r\n       </main>\r\n     </>\r\n"
+                },
+                {
+                    "date": 1748951789365,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n function Layout() {\r\n   return (\r\n     <>\r\n-    <div className='</div>'>\r\n+    <div className='justify-center'>\r\n       <Header />\r\n       </div>\r\n       <main>\r\n         <Outlet />\r\n"
+                },
+                {
+                    "date": 1748951798604,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,11 +4,9 @@\n \r\n function Layout() {\r\n   return (\r\n     <>\r\n-    <div className='justify-center'>\r\n       <Header />\r\n-      </div>\r\n       <main>\r\n         <Outlet />\r\n       </main>\r\n     </>\r\n"
+                }
+            ],
+            "date": 1748948142948,
+            "name": "Commit-0",
+            "content": "import React from 'react';\r\nimport { Outlet } from 'react-router-dom';\r\nimport Header from './Header';\r\nimport Footer from './Footer';\r\n\r\nfunction Layout() {\r\n  return (\r\n    <>\r\n      <Header />\r\n      <main>\r\n        <Outlet /> {/* Yeh jagah pe current route ka page render hoga */}\r\n      </main>\r\n      <Footer />\r\n    </>\r\n  );\r\n}\r\n\r\nexport default Layout;\r\n"
+        }
+    ]
+}
