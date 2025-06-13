@@ -1,0 +1,26 @@
+{
+    "sourceFile": "vercel.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1749849693110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749849718351,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n {\r\n     \"rewrites\": [\r\n       { \"source\": \"/(.*)\", \"destination\": \"/index.html\" }\r\n-    ]\r\n+]\r\n   }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749849724508,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n {\r\n     \"rewrites\": [\r\n-      { \"source\": \"/(.*)\", \"destination\": \"/index.html\" }\r\n+      { \"source\": \"/(.*)\", \"destination\": \"/index.html\"}\r\n ]\r\n\\ No newline at end of file\n-  }\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1749849693110,
+            "name": "Commit-0",
+            "content": "{\r\n    \"rewrites\": [\r\n      { \"source\": \"/(.*)\", \"destination\": \"/index.html\" }\r\n    ]\r\n  }"
+        }
+    ]
+}
