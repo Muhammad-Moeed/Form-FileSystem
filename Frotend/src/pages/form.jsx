@@ -411,7 +411,7 @@ const RegForm = () => {
 
                             <Col md={12} className="mb-3">
                                 <ReCAPTCHA
-                                    sitekey="6Lefg1krAAAAAA7HsVRW8KK8awvX1W3NuLNb4Hs5"
+                                   sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
                                     onChange={handleCaptchaChange}
                                 />
                             </Col>
