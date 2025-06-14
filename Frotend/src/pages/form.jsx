@@ -51,7 +51,7 @@ const RegForm = () => {
         formDataToSend.append('image', imageFile)
 
         try {
-            const response = await axios.post('http://localhost:5000/api/user/create', formDataToSend, {
+            const response = await axios.post('http://https://form-filesystem-production.up.railway.app//api/user/create', formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
