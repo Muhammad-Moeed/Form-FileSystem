@@ -26,7 +26,7 @@ const Download = () => {
     setUser(null);
 
     try {
-      const res = await axios.get(`http://https://form-filesystem-production.up.railway.app/api/user/${cnic}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/user/${cnic}`);
       if (res.data.success) {
         setUser(res.data.user);
       } else {
